@@ -1,7 +1,7 @@
 ## Swift-MVVMC-Demo
 Sample iOS application in Swift presenting usage of MVVM-C pattern.
 
-## Sample App Features
+## Application Features
 - Sign in screen
 - Dashboard with sample data fetched from mocked backend
 - Onboarding displayed after login
@@ -44,3 +44,7 @@ Project uses [Carthage](https://github.com/Carthage/Carthagehttp:// "Carthage") 
 
 ## Application usage
 Sample login screen accepts any e-mail address and password `pass`.
+
+## References
+Read more about MVVM-C: 
+- [How to use MVVM, Coordinators, and RxSwift](https://hackernoon.com/how-to-use-mvvm-coordinators-and-rxswift-7364370b7b95)
