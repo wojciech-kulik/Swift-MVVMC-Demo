@@ -33,7 +33,7 @@ View <- ViewController <- bindings -> (ViewModel -> Model) <- bindings -> Coordi
 
 ## Cons
 - Each screen requires a lot of boilerplate. You need to create Coordinator, ViewController, ViewModel and bind all together.
-- RxSwift is quite tricky if you are not carefoul enough. It's easy to cause memory leak, that's why you have to invest more time in debugging.
+- RxSwift is quite tricky if you are not careful enough. It's easy to cause memory leak, that's why you have to invest more time in debugging.
 - Bindings are not supported natively (unlike in Xamarin.Forms), therefore it is required to write a lot of "binding code" each time even when using RxSwift.
 - RxSwift may become hard in debugging once code complexity increases.
 

@@ -1,0 +1,9 @@
+{
+  "commitish" : "2.6.0",
+  "iOS" : [
+    {
+      "name" : "SwinjectAutoregistration",
+      "hash" : "880b794b46e5335a0d0eb2b81f9d2c1f3d16d6e6629c058756477656ea6b89ee"
+    }
+  ]
+}
