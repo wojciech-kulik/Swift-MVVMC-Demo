@@ -23,7 +23,7 @@ This project is POC for MVVM-C pattern where:
 - ViewModel interacts with Model and prepares data to be displayed. View uses ViewModel's data either directly or through bindings (using RxSwift) to configure itself. View also notifies ViewModel about user actions like button tap.
 - Coordinator is responsible for handling application flow, decides when and where to go based on events from ViewModel (using RxSwift bindings).
 
-View <- ViewController <- bindings -> (ViewModel -> Model) <- bindings -> Coordinator
+`View` <- `ViewController` <- bindings -> (`ViewModel` -> `Model`) <- bindings -> `Coordinator`
 
 ## Pros
 - View doesn't contain logic, it just configures itself based on ViewModel.
