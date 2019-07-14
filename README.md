@@ -48,3 +48,6 @@ Sample login screen accepts any e-mail address and password `pass`.
 ## References
 Read more about MVVM-C: 
 - [How to use MVVM, Coordinators, and RxSwift](https://hackernoon.com/how-to-use-mvvm-coordinators-and-rxswift-7364370b7b95)
+
+You can also check out my another demo with Redux architecture:
+- https://github.com/wojciech-kulik/ReSwiftDemo
