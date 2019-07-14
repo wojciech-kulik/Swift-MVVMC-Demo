@@ -1,6 +1,8 @@
 ## Swift-MVVMC-Demo
 Sample iOS application in Swift presenting usage of MVVM-C pattern.
 
+![](https://github.com/wojciech-kulik/Swift-MVVMC-Demo/blob/master/screenshots.png)
+
 ## Application Features
 - Sign in screen
 - Dashboard with sample data fetched from mocked backend
