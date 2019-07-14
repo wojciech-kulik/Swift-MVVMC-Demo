@@ -88,7 +88,6 @@
 		16DD9CEC22DA4854007D9D2F /* ApiResponse+Print.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DD9CE922DA4854007D9D2F /* ApiResponse+Print.swift */; };
 		16DD9CEF22DA4981007D9D2F /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DD9CED22DA4981007D9D2F /* DataManager.swift */; };
 		16DD9CF022DA4981007D9D2F /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DD9CEE22DA4981007D9D2F /* HttpClient.swift */; };
-		16DD9CF322DA499C007D9D2F /* UrlSessionClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DD9CF222DA499C007D9D2F /* UrlSessionClient.swift */; };
 		16DD9CF522DA4AF1007D9D2F /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16DD9CF422DA4AF1007D9D2F /* RxSwift.framework */; };
 		16DD9CF722DA504F007D9D2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 16DD9CF622DA504F007D9D2F /* Assets.xcassets */; };
 		16DD9CF922DA5522007D9D2F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DD9CF822DA5522007D9D2F /* Constants.swift */; };
@@ -219,7 +218,6 @@
 		16DD9CE922DA4854007D9D2F /* ApiResponse+Print.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ApiResponse+Print.swift"; sourceTree = "<group>"; };
 		16DD9CED22DA4981007D9D2F /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		16DD9CEE22DA4981007D9D2F /* HttpClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
-		16DD9CF222DA499C007D9D2F /* UrlSessionClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlSessionClient.swift; sourceTree = "<group>"; };
 		16DD9CF422DA4AF1007D9D2F /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
 		16DD9CF622DA504F007D9D2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		16DD9CF822DA5522007D9D2F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -572,7 +570,6 @@
 			children = (
 				16A1E59522DA40C20003F0DF /* ApiEndpoints */,
 				16A1E5C722DA40C30003F0DF /* BackendRestClient.swift */,
-				16DD9CF222DA499C007D9D2F /* UrlSessionClient.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -770,7 +767,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				16A1E5F222DA40C40003F0DF /* ViewControllerUtils.swift in Sources */,
-				16DD9CF322DA499C007D9D2F /* UrlSessionClient.swift in Sources */,
 				16A1E61222DA40C40003F0DF /* Container+RegisterDependencies.swift in Sources */,
 				16DD9CEB22DA4854007D9D2F /* String+Trim.swift in Sources */,
 				16A1E64622DA40C40003F0DF /* BackendError.swift in Sources */,
