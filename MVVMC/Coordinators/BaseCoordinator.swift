@@ -14,7 +14,10 @@ class BaseCoordinator<Result>: Coordinator {
     func coordinate<T>(to coordinator: BaseCoordinator<T>) -> Maybe<T> {
         self.store(coordinator: coordinator)
         return coordinator.start()
-            .do(onNext: { [weak self] _ in self?.free(coordinator: coordinator) })
+            .do(onNext: { [weak self, weak coordinator] _ in
+                guard let coordinator = coordinator, let `self` = self else { return }
+                self.free(coordinator: coordinator)
+            })
     }
     
     func start() -> Maybe<Result> {
