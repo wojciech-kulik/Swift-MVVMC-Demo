@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Settings View Controller-->
+        <scene sceneID="x5s-5m-cDn">
+            <objects>
+                <viewController storyboardIdentifier="SettingsViewController" id="EOs-qo-TYj" customClass="SettingsViewController" customModule="MVVMC" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Va9-nn-e1a">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c2w-Qc-H2b">
+                                <rect key="frame" x="25" y="220" width="51" height="31"/>
+                                <color key="onTintColor" red="0.047058823530000002" green="0.78823529410000004" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgc-Jq-lC3" customClass="LocalizedLabel" customModule="MVVMC" customModuleProvider="target">
+                                <rect key="frame" x="97" y="224" width="297" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="SendNotifications"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RhD-kv-iIj">
+                                <rect key="frame" x="25" y="285" width="51" height="31"/>
+                                <color key="onTintColor" red="0.047058823530000002" green="0.78823529410000004" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable Gps Tracking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uOH-Iu-bfz" customClass="LocalizedLabel" customModule="MVVMC" customModuleProvider="target">
+                                <rect key="frame" x="97" y="289" width="297" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="EnableGpsTracking"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tools" translatesAutoresizingMaskIntoConstraints="NO" id="QIw-i2-mpx">
+                                <rect key="frame" x="142" y="74" width="130" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="4ze-G7-bK5"/>
+                                    <constraint firstAttribute="height" constant="100" id="kwC-8n-aPp"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="tYd-SX-zYR" firstAttribute="trailing" secondItem="uOH-Iu-bfz" secondAttribute="trailing" constant="20" id="8IP-6G-ABM"/>
+                            <constraint firstItem="uOH-Iu-bfz" firstAttribute="leading" secondItem="RhD-kv-iIj" secondAttribute="trailing" constant="23" id="8zi-FA-rwu"/>
+                            <constraint firstItem="RhD-kv-iIj" firstAttribute="leading" secondItem="tYd-SX-zYR" secondAttribute="leading" constant="25" id="B0j-MI-a5y"/>
+                            <constraint firstItem="RhD-kv-iIj" firstAttribute="top" secondItem="c2w-Qc-H2b" secondAttribute="bottom" constant="34" id="IXv-0V-UZ4"/>
+                            <constraint firstItem="QIw-i2-mpx" firstAttribute="top" secondItem="tYd-SX-zYR" secondAttribute="top" constant="30" id="LEH-Eg-qrO"/>
+                            <constraint firstItem="QIw-i2-mpx" firstAttribute="centerX" secondItem="tYd-SX-zYR" secondAttribute="centerX" id="P8T-Yg-ZBF"/>
+                            <constraint firstItem="c2w-Qc-H2b" firstAttribute="leading" secondItem="tYd-SX-zYR" secondAttribute="leading" constant="25" id="Wfd-f3-hYf"/>
+                            <constraint firstItem="dgc-Jq-lC3" firstAttribute="top" secondItem="QIw-i2-mpx" secondAttribute="bottom" constant="50" id="dkx-33-z3b"/>
+                            <constraint firstItem="dgc-Jq-lC3" firstAttribute="centerY" secondItem="c2w-Qc-H2b" secondAttribute="centerY" id="gHK-XQ-3tR"/>
+                            <constraint firstItem="uOH-Iu-bfz" firstAttribute="centerY" secondItem="RhD-kv-iIj" secondAttribute="centerY" id="hlQ-hh-GnZ"/>
+                            <constraint firstItem="dgc-Jq-lC3" firstAttribute="leading" secondItem="c2w-Qc-H2b" secondAttribute="trailing" constant="23" id="utT-yg-ZGw"/>
+                            <constraint firstItem="tYd-SX-zYR" firstAttribute="trailing" secondItem="dgc-Jq-lC3" secondAttribute="trailing" constant="20" id="vtS-Uh-wcr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="tYd-SX-zYR"/>
+                    </view>
+                    <connections>
+                        <outlet property="gpsTrackingSwitch" destination="RhD-kv-iIj" id="19Z-R3-4EG"/>
+                        <outlet property="sendNotificationsSwitch" destination="c2w-Qc-H2b" id="9pT-NB-n8c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eI5-xC-0aB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="130.58035714285714"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="tools" width="170.66667175292969" height="171"/>
+    </resources>
+</document>

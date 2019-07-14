@@ -1,0 +1,46 @@
+{
+    "languages": {
+        "pl-PL": {
+            "Dashboard": "[pl] Dashboard",
+            "SignIn": "[pl] Sign In",
+            "Email": "[pl] E-mail",
+            "Password": "[pl] Password",
+            "Settings": "[pl] Settings",
+            "SignOut": "[pl] Sign Out",
+            "Error": "[pl] Error",
+            "Back": "[pl] Back",
+            "YourTasksForToday": "[pl] Your tasks for today:",
+            "FillYourName": "[pl] Fill Your Name",
+            "AdjustSettings": "[pl] Adjust Settings",
+            "EnableGpsTracking": "[pl] Enable Gps Tracking",
+            "SendNotifications": "[pl] Send Notifications",
+            "FirstName": "[pl] First name",
+            "LastName": "[pl] Last name",
+            "Next": "[pl] Next",
+            "Finish": "[pl] Finish",
+            "InvalidCredentials": "[pl] Username or password is incorrect. Try this password: pass",
+            "OK": "[pl] OK"
+        },
+        "en": {
+            "Dashboard": "Dashboard",
+            "SignIn": "Sign In",
+            "Email": "E-mail",
+            "Password": "Password",
+            "Settings": "Settings",
+            "SignOut": "Sign Out",
+            "Error": "Error",
+            "Back": "Back",
+            "YourTasksForToday": "Your tasks for today:",
+            "FillYourName": "Fill Your Name",
+            "AdjustSettings": "Adjust Settings",
+            "EnableGpsTracking": "Enable Gps Tracking",
+            "SendNotifications": "Send Notifications",
+            "FirstName": "First name",
+            "LastName": "Last name",
+            "Next": "Next",
+            "Finish": "Finish",
+            "InvalidCredentials": "Username or password is incorrect. Try this password: pass",
+            "OK": "OK"
+        }
+    }
+}

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Sign In View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="SignInViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="SignInViewController" customModule="MVVMC" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ufc-sg-3nl" customClass="LocalizedTextField" customModule="MVVMC" customModuleProvider="target">
+                                <rect key="frame" x="40" y="310" width="295" height="30"/>
+                                <accessibility key="accessibilityConfiguration" identifier="emailTextField"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholderLocalizationKey" value="Email"/>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YaI-Se-TFJ" customClass="LocalizedTextField" customModule="MVVMC" customModuleProvider="target">
+                                <rect key="frame" x="40" y="364" width="295" height="30"/>
+                                <accessibility key="accessibilityConfiguration" identifier="passwordTextField"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholderLocalizationKey" value="Password"/>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swift_logo" translatesAutoresizingMaskIntoConstraints="NO" id="mRd-TP-CJ3">
+                                <rect key="frame" x="60" y="60" width="255" height="210"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="210" id="wED-fU-mYi"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lsW-cL-hN3" customClass="ButtonWithProgress" customModule="MVVMC" customModuleProvider="target">
+                                <rect key="frame" x="120" y="431" width="135" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <accessibility key="accessibilityConfiguration" identifier="loginButton"/>
+                                <color key="tintColor" red="0.081568567960000005" green="0.56862745100000001" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="9" maxX="40" maxY="9"/>
+                                <state key="normal" title="Sign In">
+                                    <color key="titleColor" red="0.081568567961165045" green="0.56862745098039214" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="SignIn"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="upperText" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <accessibility key="accessibilityConfiguration" identifier="loginView"/>
+                        <constraints>
+                            <constraint firstItem="Ufc-sg-3nl" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="1Jt-9q-m2k"/>
+                            <constraint firstItem="YaI-Se-TFJ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="6kj-zG-zSz"/>
+                            <constraint firstItem="Ufc-sg-3nl" firstAttribute="top" secondItem="mRd-TP-CJ3" secondAttribute="bottom" constant="40" id="8kt-xN-osW"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="YaI-Se-TFJ" secondAttribute="trailing" constant="40" id="B5Z-ue-qfh"/>
+                            <constraint firstItem="lsW-cL-hN3" firstAttribute="top" secondItem="YaI-Se-TFJ" secondAttribute="bottom" constant="37" id="Ggs-rf-M0c"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ufc-sg-3nl" secondAttribute="trailing" constant="40" id="IKG-nt-mty"/>
+                            <constraint firstItem="lsW-cL-hN3" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="XuQ-2o-Se4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="lsW-cL-hN3" secondAttribute="trailing" constant="20" id="aN0-Lr-9E6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mRd-TP-CJ3" secondAttribute="trailing" constant="60" id="f3k-p3-ElY"/>
+                            <constraint firstItem="mRd-TP-CJ3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="60" id="gmQ-LO-TeR"/>
+                            <constraint firstItem="mRd-TP-CJ3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="gr8-Wk-0d9"/>
+                            <constraint firstItem="lsW-cL-hN3" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="hCY-yh-lG6"/>
+                            <constraint firstItem="YaI-Se-TFJ" firstAttribute="top" secondItem="Ufc-sg-3nl" secondAttribute="bottom" constant="24" id="m8i-DS-muH"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="passwordTextField" destination="YaI-Se-TFJ" id="u6f-dO-W9e"/>
+                        <outlet property="signInButton" destination="lsW-cL-hN3" id="KV1-K1-f82"/>
+                        <outlet property="usernameTextField" destination="Ufc-sg-3nl" id="s9Y-qB-l15"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="132.68365817091455"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="swift_logo" width="569" height="512"/>
+    </resources>
+</document>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Set Name View Controller-->
+        <scene sceneID="ccs-T7-YVY">
+            <objects>
+                <viewController storyboardIdentifier="SetNameViewController" id="aVB-q0-SDW" customClass="SetNameViewController" customModule="MVVMC" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dEd-qA-i2h">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fill Your Name" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39c-d1-pcE" customClass="LocalizedLabel" customModule="MVVMC" customModuleProvider="target">
+                                <rect key="frame" x="25" y="84" width="364" height="31.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="FillYourName"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fL1-up-0qY" customClass="LocalizedTextField" customModule="MVVMC" customModuleProvider="target">
+                                <rect key="frame" x="60" y="194" width="294" height="30"/>
+                                <accessibility key="accessibilityConfiguration" identifier="emailTextField"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholderLocalizationKey" value="FirstName"/>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fTx-jz-UGa" customClass="LocalizedTextField" customModule="MVVMC" customModuleProvider="target">
+                                <rect key="frame" x="60" y="248" width="294" height="30"/>
+                                <accessibility key="accessibilityConfiguration" identifier="passwordTextField"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholderLocalizationKey" value="LastName"/>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4a9-Tb-Dhd" customClass="LocalizedButton" customModule="MVVMC" customModuleProvider="target">
+                                <rect key="frame" x="148" y="771" width="118" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <accessibility key="accessibilityConfiguration" identifier="loginButton"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="9" maxX="40" maxY="9"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Next"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.081568567960000005" green="0.56862745100000001" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="fTx-jz-UGa" firstAttribute="leading" secondItem="Pv9-JJ-Afn" secondAttribute="leading" constant="60" id="CZU-oM-MlW"/>
+                            <constraint firstItem="4a9-Tb-Dhd" firstAttribute="centerX" secondItem="Pv9-JJ-Afn" secondAttribute="centerX" id="Dgv-v9-5eg"/>
+                            <constraint firstItem="fL1-up-0qY" firstAttribute="top" secondItem="39c-d1-pcE" secondAttribute="bottom" constant="78.5" id="Gps-rF-a1C"/>
+                            <constraint firstItem="Pv9-JJ-Afn" firstAttribute="trailing" secondItem="fTx-jz-UGa" secondAttribute="trailing" constant="60" id="RUA-fD-DRu"/>
+                            <constraint firstItem="39c-d1-pcE" firstAttribute="leading" secondItem="Pv9-JJ-Afn" secondAttribute="leading" constant="25" id="Rb3-db-WQV"/>
+                            <constraint firstItem="Pv9-JJ-Afn" firstAttribute="bottom" secondItem="4a9-Tb-Dhd" secondAttribute="bottom" constant="51" id="UET-Mj-Xd6"/>
+                            <constraint firstItem="fTx-jz-UGa" firstAttribute="top" secondItem="fL1-up-0qY" secondAttribute="bottom" constant="24" id="UGp-4k-wHm"/>
+                            <constraint firstItem="Pv9-JJ-Afn" firstAttribute="trailing" secondItem="fL1-up-0qY" secondAttribute="trailing" constant="60" id="erf-dk-t2R"/>
+                            <constraint firstItem="fL1-up-0qY" firstAttribute="leading" secondItem="Pv9-JJ-Afn" secondAttribute="leading" constant="60" id="fvN-07-oEy"/>
+                            <constraint firstItem="39c-d1-pcE" firstAttribute="centerX" secondItem="Pv9-JJ-Afn" secondAttribute="centerX" id="lNH-SD-XN0"/>
+                            <constraint firstItem="39c-d1-pcE" firstAttribute="top" secondItem="Pv9-JJ-Afn" secondAttribute="top" constant="40" id="myq-zK-fMq"/>
+                            <constraint firstItem="Pv9-JJ-Afn" firstAttribute="trailing" secondItem="39c-d1-pcE" secondAttribute="trailing" constant="25" id="v2a-3r-qKe"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Pv9-JJ-Afn"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="NuA-TR-oc7"/>
+                    <connections>
+                        <outlet property="firstNameTextField" destination="fL1-up-0qY" id="oSS-pI-n0e"/>
+                        <outlet property="lastNameTextField" destination="fTx-jz-UGa" id="pvp-lV-rSs"/>
+                        <outlet property="nextButton" destination="4a9-Tb-Dhd" id="N5u-dy-HvE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qiO-Eb-30T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1042.0289855072465" y="127.90178571428571"/>
+        </scene>
+        <!--Set Options View Controller-->
+        <scene sceneID="81u-c0-dy3">
+            <objects>
+                <viewController storyboardIdentifier="SetOptionsViewController" id="vs5-se-sJS" customClass="SetOptionsViewController" customModule="MVVMC" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ic6-aT-hmT">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adjust Settings" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1mr-eP-fUd" customClass="LocalizedLabel" customModule="MVVMC" customModuleProvider="target">
+                                <rect key="frame" x="25" y="84" width="364" height="31.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="AdjustSettings"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mHc-YX-b3k" customClass="LocalizedButton" customModule="MVVMC" customModuleProvider="target">
+                                <rect key="frame" x="143" y="771" width="128" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <accessibility key="accessibilityConfiguration" identifier="loginButton"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="contentEdgeInsets" minX="40" minY="9" maxX="40" maxY="9"/>
+                                <state key="normal" title="Finish">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="Finish"/>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XZf-Ac-LHU">
+                                <rect key="frame" x="45" y="192" width="51" height="31"/>
+                                <color key="onTintColor" red="0.047058823529411764" green="0.78823529411764703" blue="0.76862745098039209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MbL-g1-KZl" customClass="LocalizedLabel" customModule="MVVMC" customModuleProvider="target">
+                                <rect key="frame" x="117" y="196" width="156" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="SendNotifications"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FCO-z0-xJU">
+                                <rect key="frame" x="45" y="257" width="51" height="31"/>
+                                <color key="onTintColor" red="0.047058823530000002" green="0.78823529410000004" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable Gps Tracking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3PJ-q3-yCi" customClass="LocalizedLabel" customModule="MVVMC" customModuleProvider="target">
+                                <rect key="frame" x="117" y="261" width="174.5" height="23"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="localizationKey" value="EnableGpsTracking"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.081568567960000005" green="0.56862745100000001" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="3PJ-q3-yCi" firstAttribute="centerY" secondItem="FCO-z0-xJU" secondAttribute="centerY" id="8WK-a2-tOY"/>
+                            <constraint firstItem="3PJ-q3-yCi" firstAttribute="leading" secondItem="FCO-z0-xJU" secondAttribute="trailing" constant="23" id="9On-X1-tIp"/>
+                            <constraint firstItem="mHc-YX-b3k" firstAttribute="centerX" secondItem="Wg5-Ip-9fN" secondAttribute="centerX" id="DIg-7Y-49S"/>
+                            <constraint firstItem="MbL-g1-KZl" firstAttribute="centerY" secondItem="XZf-Ac-LHU" secondAttribute="centerY" id="FNK-m0-vQV"/>
+                            <constraint firstItem="FCO-z0-xJU" firstAttribute="leading" secondItem="Wg5-Ip-9fN" secondAttribute="leading" constant="45" id="FQ5-dL-gxs"/>
+                            <constraint firstItem="MbL-g1-KZl" firstAttribute="leading" secondItem="XZf-Ac-LHU" secondAttribute="trailing" constant="23" id="JHX-iG-fDt"/>
+                            <constraint firstItem="XZf-Ac-LHU" firstAttribute="top" secondItem="1mr-eP-fUd" secondAttribute="bottom" constant="76.5" id="PAe-V4-aeJ"/>
+                            <constraint firstItem="1mr-eP-fUd" firstAttribute="centerX" secondItem="Wg5-Ip-9fN" secondAttribute="centerX" id="Vwq-t4-cZC"/>
+                            <constraint firstItem="MbL-g1-KZl" firstAttribute="leading" secondItem="Wg5-Ip-9fN" secondAttribute="leading" constant="117" id="bP9-zH-S5D"/>
+                            <constraint firstItem="FCO-z0-xJU" firstAttribute="top" secondItem="XZf-Ac-LHU" secondAttribute="bottom" constant="34" id="cG3-Ed-rID"/>
+                            <constraint firstItem="XZf-Ac-LHU" firstAttribute="leading" secondItem="Wg5-Ip-9fN" secondAttribute="leading" constant="45" id="eGL-HK-8FX"/>
+                            <constraint firstItem="1mr-eP-fUd" firstAttribute="leading" secondItem="Wg5-Ip-9fN" secondAttribute="leading" constant="25" id="hjx-0a-Rfv"/>
+                            <constraint firstItem="Wg5-Ip-9fN" firstAttribute="trailing" secondItem="1mr-eP-fUd" secondAttribute="trailing" constant="25" id="m5G-rC-r4U"/>
+                            <constraint firstItem="Wg5-Ip-9fN" firstAttribute="bottom" secondItem="mHc-YX-b3k" secondAttribute="bottom" constant="51" id="vHr-bK-6d4"/>
+                            <constraint firstItem="1mr-eP-fUd" firstAttribute="top" secondItem="Wg5-Ip-9fN" secondAttribute="top" constant="40" id="wHi-fJ-ZwS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Wg5-Ip-9fN"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="vxH-dX-n5W"/>
+                    <connections>
+                        <outlet property="finishButton" destination="mHc-YX-b3k" id="xTI-XQ-UOt"/>
+                        <outlet property="gpsTrackingSwitch" destination="FCO-z0-xJU" id="1pc-Y7-F6P"/>
+                        <outlet property="notificationsSwitch" destination="XZf-Ac-LHU" id="589-zW-gLU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dif-GU-IHb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1806" y="128"/>
+        </scene>
+    </scenes>
+</document>

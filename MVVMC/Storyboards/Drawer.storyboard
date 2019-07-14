@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="Sli-2N-OsX">
+            <objects>
+                <viewController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nji-4f-Ola" customClass="MainViewController" customModule="MVVMC" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="oeJ-bi-9gZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="7X4-Oc-yhN"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="SZF-h9-eJA"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="twY-p0-D4h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-612" y="-833"/>
+        </scene>
+        <!--Drawer Menu View Controller-->
+        <scene sceneID="2Qb-at-nQf">
+            <objects>
+                <viewController storyboardIdentifier="DrawerMenuViewController" id="rHb-Y6-0tN" customClass="DrawerMenuViewController" customModule="MVVMC" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="2Ve-Bw-trS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="avatar" translatesAutoresizingMaskIntoConstraints="NO" id="OSd-p8-RZT">
+                                <rect key="frame" x="142.5" y="40" width="90" height="90"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="STZ-P3-Zte"/>
+                                    <constraint firstAttribute="height" constant="90" id="msW-hy-1sg"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="John Snow" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bip-92-WKO">
+                                <rect key="frame" x="30" y="140" width="315" height="24"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="john.snow@gmail.com" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OEv-Ae-oFn">
+                                <rect key="frame" x="20" y="170" width="335" height="15"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="43" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pe6-UA-59a">
+                                <rect key="frame" x="0.0" y="215" width="375" height="452"/>
+                                <color key="backgroundColor" red="0.98039215690000003" green="0.98431372549999996" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="defaultCell" textLabel="swV-qI-bni" style="IBUITableViewCellStyleDefault" id="RqY-YN-sHg">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="43"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RqY-YN-sHg" id="3b1-Ho-U9B">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="swV-qI-bni">
+                                                    <rect key="frame" x="37" y="0.0" width="323" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.98039215690000003" green="0.98431372549999996" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <inset key="separatorInset" minX="37" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.98039215686274506" green="0.98431372549019602" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="OEv-Ae-oFn" firstAttribute="top" secondItem="Bip-92-WKO" secondAttribute="bottom" constant="6" id="EvA-VP-0Yl"/>
+                            <constraint firstItem="OEv-Ae-oFn" firstAttribute="leading" secondItem="hma-EU-hC3" secondAttribute="leading" constant="20" id="JMe-z9-wub"/>
+                            <constraint firstItem="pe6-UA-59a" firstAttribute="trailing" secondItem="hma-EU-hC3" secondAttribute="trailing" id="Ri9-6l-9bm"/>
+                            <constraint firstItem="Bip-92-WKO" firstAttribute="top" secondItem="OSd-p8-RZT" secondAttribute="bottom" constant="10" id="SGi-lb-hU0"/>
+                            <constraint firstItem="Bip-92-WKO" firstAttribute="leading" secondItem="hma-EU-hC3" secondAttribute="leading" constant="30" id="hcu-eU-NRc"/>
+                            <constraint firstItem="OSd-p8-RZT" firstAttribute="top" secondItem="hma-EU-hC3" secondAttribute="top" constant="20" id="jUI-eF-4CP"/>
+                            <constraint firstItem="pe6-UA-59a" firstAttribute="leading" secondItem="hma-EU-hC3" secondAttribute="leading" id="qER-HY-iBx"/>
+                            <constraint firstItem="hma-EU-hC3" firstAttribute="trailing" secondItem="OEv-Ae-oFn" secondAttribute="trailing" constant="20" id="rBX-Ld-iBC"/>
+                            <constraint firstItem="pe6-UA-59a" firstAttribute="bottom" secondItem="hma-EU-hC3" secondAttribute="bottom" id="sb7-c8-atz"/>
+                            <constraint firstItem="hma-EU-hC3" firstAttribute="trailing" secondItem="Bip-92-WKO" secondAttribute="trailing" constant="30" id="sjl-Fm-LGe"/>
+                            <constraint firstItem="OSd-p8-RZT" firstAttribute="centerX" secondItem="hma-EU-hC3" secondAttribute="centerX" id="uMI-aZ-pb0"/>
+                            <constraint firstItem="pe6-UA-59a" firstAttribute="top" secondItem="OEv-Ae-oFn" secondAttribute="bottom" constant="30" id="z35-3u-zA0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="hma-EU-hC3"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="BYJ-kM-zTt"/>
+                    <connections>
+                        <outlet property="emailLabel" destination="OEv-Ae-oFn" id="pLX-L1-smy"/>
+                        <outlet property="nameLabel" destination="Bip-92-WKO" id="p5e-WH-WvC"/>
+                        <outlet property="tableView" destination="pe6-UA-59a" id="Oxa-03-Dxz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sxO-LW-bsW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1268" y="-833.43328335832086"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="avatar" width="112.5" height="112.5"/>
+    </resources>
+</document>
