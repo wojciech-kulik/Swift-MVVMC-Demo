@@ -273,6 +273,76 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1657979B22DB8B7A00DA52D2 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				16DD9D0822DA8216007D9D2F /* LaunchScreen.storyboard */,
+				16A1E5AC22DA40C30003F0DF /* AppCoordinator.swift */,
+				1657979E22DB8C2200DA52D2 /* Base */,
+				1657979C22DB8B9C00DA52D2 /* SignIn */,
+				1657979D22DB8BE500DA52D2 /* DrawerMenu */,
+				1657979F22DB8C3B00DA52D2 /* Dashboard */,
+				16DD9D0A22DA8511007D9D2F /* OnBoarding */,
+				165797A022DB8C5800DA52D2 /* Settings */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		1657979C22DB8B9C00DA52D2 /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				16A1E57122DA40C20003F0DF /* SignIn.storyboard */,
+				16A1E5AE22DA40C30003F0DF /* SignInCoordinator.swift */,
+				16A1E5BB22DA40C30003F0DF /* SignInViewController.swift */,
+				16A1E59B22DA40C20003F0DF /* SignInViewModel.swift */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
+		1657979D22DB8BE500DA52D2 /* DrawerMenu */ = {
+			isa = PBXGroup;
+			children = (
+				16A1E57322DA40C20003F0DF /* Drawer.storyboard */,
+				16A1E5AD22DA40C30003F0DF /* DrawerMenuCoordinator.swift */,
+				16A1E5C122DA40C30003F0DF /* DrawerMenuViewController.swift */,
+				16A1E59D22DA40C20003F0DF /* DrawerMenuViewModel.swift */,
+				16A1E5BF22DA40C30003F0DF /* MainViewController.swift */,
+			);
+			path = DrawerMenu;
+			sourceTree = "<group>";
+		};
+		1657979E22DB8C2200DA52D2 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				16A1E5B022DA40C30003F0DF /* BaseCoordinator.swift */,
+				16A1E5BC22DA40C30003F0DF /* BaseNavigationController.swift */,
+				16A1E5C022DA40C30003F0DF /* ViewControllerWithSideMenu.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		1657979F22DB8C3B00DA52D2 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				16DD9CFC22DA6587007D9D2F /* Dashboard.storyboard */,
+				16A1E5AF22DA40C30003F0DF /* DashboardCoordinator.swift */,
+				16A1E5BE22DA40C30003F0DF /* DashboardViewController.swift */,
+				16A1E59E22DA40C20003F0DF /* DashboardViewModel.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		165797A022DB8C5800DA52D2 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				16DD9D1822DB314C007D9D2F /* Settings.storyboard */,
+				16DD9D1C22DB32AA007D9D2F /* SettingsCoordinator.swift */,
+				16DD9D1A22DB3242007D9D2F /* SettingsViewController.swift */,
+				16DD9D1E22DB32F2007D9D2F /* SettingsViewModel.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		16A1E52D22DA3F140003F0DF = {
 			isa = PBXGroup;
 			children = (
@@ -300,18 +370,15 @@
 			isa = PBXGroup;
 			children = (
 				16DD9CF622DA504F007D9D2F /* Assets.xcassets */,
+				1657979B22DB8B7A00DA52D2 /* App */,
 				16A1E58A22DA40C20003F0DF /* Controls */,
-				16A1E5AB22DA40C30003F0DF /* Coordinators */,
 				16A1E59F22DA40C30003F0DF /* DependencyInjection */,
 				16A1E57B22DA40C20003F0DF /* Extensions */,
 				16A1E5D022DA40C40003F0DF /* Models */,
-				16DD9CF122DA499C007D9D2F /* Network */,
+				16DD9CF122DA499C007D9D2F /* Networking */,
 				16A1E5A422DA40C30003F0DF /* Protocols */,
 				16A1E5C422DA40C30003F0DF /* Services */,
-				16A1E56922DA40C20003F0DF /* Storyboards */,
 				16A1E57522DA40C20003F0DF /* Utils */,
-				16A1E5B122DA40C30003F0DF /* ViewControllers */,
-				16A1E59922DA40C20003F0DF /* ViewModels */,
 				16A1E5C322DA40C30003F0DF /* AppDelegate.swift */,
 				16DD9CF822DA5522007D9D2F /* Constants.swift */,
 				16A1E5AA22DA40C30003F0DF /* translations.json */,
@@ -336,19 +403,6 @@
 				16A1E55B22DA3F170003F0DF /* Info.plist */,
 			);
 			path = MVVMCUITests;
-			sourceTree = "<group>";
-		};
-		16A1E56922DA40C20003F0DF /* Storyboards */ = {
-			isa = PBXGroup;
-			children = (
-				16DD9D0822DA8216007D9D2F /* LaunchScreen.storyboard */,
-				16A1E57122DA40C20003F0DF /* SignIn.storyboard */,
-				16A1E57322DA40C20003F0DF /* Drawer.storyboard */,
-				16DD9CFC22DA6587007D9D2F /* Dashboard.storyboard */,
-				16DD9D0522DA8192007D9D2F /* OnBoarding.storyboard */,
-				16DD9D1822DB314C007D9D2F /* Settings.storyboard */,
-			);
-			path = Storyboards;
 			sourceTree = "<group>";
 		};
 		16A1E57522DA40C20003F0DF /* Utils */ = {
@@ -416,18 +470,6 @@
 			path = ApiEndpoints;
 			sourceTree = "<group>";
 		};
-		16A1E59922DA40C20003F0DF /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-				16DD9D0B22DA852D007D9D2F /* OnBoarding */,
-				16A1E59B22DA40C20003F0DF /* SignInViewModel.swift */,
-				16A1E59D22DA40C20003F0DF /* DrawerMenuViewModel.swift */,
-				16A1E59E22DA40C20003F0DF /* DashboardViewModel.swift */,
-				16DD9D1E22DB32F2007D9D2F /* SettingsViewModel.swift */,
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		16A1E59F22DA40C30003F0DF /* DependencyInjection */ = {
 			isa = PBXGroup;
 			children = (
@@ -450,47 +492,9 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		16A1E5AB22DA40C30003F0DF /* Coordinators */ = {
-			isa = PBXGroup;
-			children = (
-				16A1E5B022DA40C30003F0DF /* BaseCoordinator.swift */,
-				16A1E5AC22DA40C30003F0DF /* AppCoordinator.swift */,
-				16A1E5AD22DA40C30003F0DF /* DrawerMenuCoordinator.swift */,
-				16A1E5AE22DA40C30003F0DF /* SignInCoordinator.swift */,
-				16A1E5AF22DA40C30003F0DF /* DashboardCoordinator.swift */,
-				16DD9D0122DA7D5F007D9D2F /* OnBoardingCoordinator.swift */,
-				16DD9D1C22DB32AA007D9D2F /* SettingsCoordinator.swift */,
-			);
-			path = Coordinators;
-			sourceTree = "<group>";
-		};
-		16A1E5B122DA40C30003F0DF /* ViewControllers */ = {
-			isa = PBXGroup;
-			children = (
-				16A1E5BD22DA40C30003F0DF /* DrawerMenu */,
-				16DD9D0A22DA8511007D9D2F /* OnBoarding */,
-				16A1E5BC22DA40C30003F0DF /* BaseNavigationController.swift */,
-				16A1E5BB22DA40C30003F0DF /* SignInViewController.swift */,
-				16A1E5BE22DA40C30003F0DF /* DashboardViewController.swift */,
-				16DD9D1A22DB3242007D9D2F /* SettingsViewController.swift */,
-			);
-			path = ViewControllers;
-			sourceTree = "<group>";
-		};
-		16A1E5BD22DA40C30003F0DF /* DrawerMenu */ = {
-			isa = PBXGroup;
-			children = (
-				16A1E5C122DA40C30003F0DF /* DrawerMenuViewController.swift */,
-				16A1E5BF22DA40C30003F0DF /* MainViewController.swift */,
-				16A1E5C022DA40C30003F0DF /* ViewControllerWithSideMenu.swift */,
-			);
-			path = DrawerMenu;
-			sourceTree = "<group>";
-		};
 		16A1E5C422DA40C30003F0DF /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				16A1E5C722DA40C30003F0DF /* BackendRestClient.swift */,
 				16A1E5C622DA40C30003F0DF /* ErrorHandler.swift */,
 				16A1E5C822DA40C30003F0DF /* SessionService.swift */,
 				16A1E5C522DA40C30003F0DF /* TranslationsService.swift */,
@@ -563,13 +567,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		16DD9CF122DA499C007D9D2F /* Network */ = {
+		16DD9CF122DA499C007D9D2F /* Networking */ = {
 			isa = PBXGroup;
 			children = (
 				16A1E59522DA40C20003F0DF /* ApiEndpoints */,
+				16A1E5C722DA40C30003F0DF /* BackendRestClient.swift */,
 				16DD9CF222DA499C007D9D2F /* UrlSessionClient.swift */,
 			);
-			path = Network;
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		16DD9D0022DA75E7007D9D2F /* Mocks */ = {
@@ -583,16 +588,11 @@
 		16DD9D0A22DA8511007D9D2F /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
+				16DD9D0522DA8192007D9D2F /* OnBoarding.storyboard */,
+				16DD9D0122DA7D5F007D9D2F /* OnBoardingCoordinator.swift */,
 				16DD9D0C22DA8557007D9D2F /* SetNameViewController.swift */,
-				16DD9D0E22DA8565007D9D2F /* SetOptionsViewController.swift */,
-			);
-			path = OnBoarding;
-			sourceTree = "<group>";
-		};
-		16DD9D0B22DA852D007D9D2F /* OnBoarding */ = {
-			isa = PBXGroup;
-			children = (
 				16DD9D1022DA8615007D9D2F /* SetNameViewModel.swift */,
+				16DD9D0E22DA8565007D9D2F /* SetOptionsViewController.swift */,
 				16DD9D1222DA861F007D9D2F /* SetOptionsViewModel.swift */,
 			);
 			path = OnBoarding;

@@ -42,7 +42,7 @@ class DrawerMenuCoordinator: BaseCoordinator<Void> {
         case .dashboard:
             self.removeChildCoordinators()
             let coordinator = AppDelegate.container.resolve(DashboardCoordinator.self)!
-            coordinator.rootViewController = self.mainViewController
+            coordinator.mainViewController = self.mainViewController
             self.coordinate(to: coordinator)
                 .subscribe()
                 .disposed(by: self.disposeBag)
@@ -50,7 +50,7 @@ class DrawerMenuCoordinator: BaseCoordinator<Void> {
         case .settings:
             self.removeChildCoordinators()
             let coordinator = AppDelegate.container.resolve(SettingsCoordinator.self)!
-            coordinator.rootViewController = self.mainViewController
+            coordinator.mainViewController = self.mainViewController
             self.coordinate(to: coordinator)
                 .subscribe()
                 .disposed(by: self.disposeBag)

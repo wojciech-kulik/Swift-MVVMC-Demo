@@ -15,7 +15,7 @@ class HttpClientMock: HttpClient {
                     request.password == "pass" {
                     completion(self.getResponse(200, resource, method, "{ \"accessToken\": \"12345678\", \"tokenType\": \"bearer\" }"))
                 } else {
-                    completion(self.getResponse(401, resource, method, "{ \"errorDescription\": \"Username or password is incorrect. Try this password: pass\", \"errorCode\": \"InvalidCredentials\" }"))
+                    completion(self.getResponse(401, resource, method, "{ \"errorCode\": \"InvalidCredentials\" }"))
                 }
             } else if resource == "me" {
                 completion(self.getResponse(200, resource, method, "{ \"userId\": \"1234-2131-1234\" }"))

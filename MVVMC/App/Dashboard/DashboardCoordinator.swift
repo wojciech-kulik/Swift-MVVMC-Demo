@@ -3,8 +3,8 @@ import RxSwift
 
 class DashboardCoordinator: BaseCoordinator<Void> {
     
-    var rootViewController: MainViewController!
-    var navigationController: BaseNavigationController!
+    var mainViewController: MainViewController!
+    var dashboardViewController: BaseNavigationController!
     
     private let dashboardViewModel: DashboardViewModel
     private let dataManager: DataManager
@@ -18,8 +18,8 @@ class DashboardCoordinator: BaseCoordinator<Void> {
         let viewController = DashboardViewController.instantiate()
         viewController.viewModel = self.dashboardViewModel
         
-        self.navigationController = BaseNavigationController(rootViewController: viewController)
-        rootViewController.display(viewController: self.navigationController)
+        self.dashboardViewController = BaseNavigationController(rootViewController: viewController)
+        self.mainViewController.display(viewController: self.dashboardViewController)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.showOnBoardingIfNeeded()
@@ -32,11 +32,11 @@ class DashboardCoordinator: BaseCoordinator<Void> {
         guard self.dataManager.get(key: SettingKey.onBoardingData, type: OnBoardingData.self) == nil else { return }
         
         let coordinator = AppDelegate.container.resolve(OnBoardingCoordinator.self)!
-        coordinator.navigationController = self.navigationController
+        coordinator.navigationController = self.dashboardViewController
         
         self.coordinate(to: coordinator)
             .subscribe(onSuccess: { [weak self] _ in
-                self?.navigationController.dismiss(animated: true, completion: nil)
+                self?.dashboardViewController.dismiss(animated: true, completion: nil)
             })
             .disposed(by: self.disposeBag)
     }

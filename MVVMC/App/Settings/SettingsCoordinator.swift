@@ -3,7 +3,7 @@ import RxSwift
 
 class SettingsCoordinator: BaseCoordinator<Void> {
     
-    var rootViewController: MainViewController!
+    var mainViewController: MainViewController!
     private let settingsViewModel: SettingsViewModel
     
     init(settingsViewModel: SettingsViewModel) {
@@ -14,7 +14,7 @@ class SettingsCoordinator: BaseCoordinator<Void> {
         let viewController = SettingsViewController.instantiate()
         viewController.viewModel = self.settingsViewModel
         
-        rootViewController.display(viewController: BaseNavigationController(rootViewController: viewController))
+        self.mainViewController.display(viewController: BaseNavigationController(rootViewController: viewController))
         
         return Maybe.never()
     }
