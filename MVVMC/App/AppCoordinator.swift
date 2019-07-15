@@ -44,15 +44,27 @@ class AppCoordinator: BaseCoordinator<Void> {
     
     private func showSignIn() {
         self.removeChildCoordinators()
-        self.coordinate(to: AppDelegate.container.resolve(SignInCoordinator.self)!)
+        
+        let coordinator = AppDelegate.container.resolve(SignInCoordinator.self)!
+        self.coordinate(to: coordinator)
             .subscribe()
             .disposed(by: self.disposeBag)
+        
+        ViewControllerUtils.setRootViewController(
+            viewController: coordinator.navigationController,
+            withAnimation: true)
     }
     
     private func showDashboard() {
         self.removeChildCoordinators()
-        self.coordinate(to: AppDelegate.container.resolve(DrawerMenuCoordinator.self)!)
+        
+        let coordinator = AppDelegate.container.resolve(DrawerMenuCoordinator.self)!
+        self.coordinate(to: coordinator)
             .subscribe()
             .disposed(by: self.disposeBag)
+        
+        ViewControllerUtils.setRootViewController(
+            viewController: coordinator.navigationController,
+            withAnimation: true)
     }
 }

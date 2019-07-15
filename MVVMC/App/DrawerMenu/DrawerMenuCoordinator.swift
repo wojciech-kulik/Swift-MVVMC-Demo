@@ -8,6 +8,8 @@ class DrawerMenuCoordinator: BaseCoordinator<Void> {
     private let sessionService: SessionService
     private let drawerMenuViewModel: DrawerMenuViewModel
     
+    var navigationController = BaseNavigationController()
+    
     init(sessionService: SessionService, drawerMenuViewModel: DrawerMenuViewModel) {
         self.drawerMenuViewModel = drawerMenuViewModel
         self.sessionService = sessionService
@@ -33,6 +35,7 @@ class DrawerMenuCoordinator: BaseCoordinator<Void> {
         case .dashboard:
             self.removeChildCoordinators()
             let coordinator = AppDelegate.container.resolve(DashboardCoordinator.self)!
+            coordinator.navigationController = self.navigationController
             self.coordinate(to: coordinator)
                 .subscribe()
                 .disposed(by: self.disposeBag)
@@ -40,6 +43,7 @@ class DrawerMenuCoordinator: BaseCoordinator<Void> {
         case .settings:
             self.removeChildCoordinators()
             let coordinator = AppDelegate.container.resolve(SettingsCoordinator.self)!
+            coordinator.navigationController = self.navigationController
             self.coordinate(to: coordinator)
                 .subscribe()
                 .disposed(by: self.disposeBag)
@@ -48,9 +52,6 @@ class DrawerMenuCoordinator: BaseCoordinator<Void> {
             self.sessionService.signOut()
                 .subscribe()
                 .disposed(by: self.disposeBag)
-            
-        default:
-            break
         }
     }
 }

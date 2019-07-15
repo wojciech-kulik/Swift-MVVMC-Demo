@@ -7,6 +7,8 @@ class DashboardCoordinator: BaseCoordinator<Void> {
     private let dashboardViewModel: DashboardViewModel
     private let dataManager: DataManager
     
+    var navigationController = UINavigationController()
+    
     init(dashboardViewModel: DashboardViewModel, dataManager: DataManager) {
         self.dashboardViewModel = dashboardViewModel
         self.dataManager = dataManager
@@ -15,23 +17,21 @@ class DashboardCoordinator: BaseCoordinator<Void> {
     override func start() -> Maybe<Void> {
         let viewController = DashboardViewController.instantiate()
         viewController.viewModel = self.dashboardViewModel
-        let dashboardViewController = BaseNavigationController(rootViewController: viewController)
         
-        ViewControllerUtils.setRootViewController(viewController: dashboardViewController,
-                                                  withAnimation: false)
+        self.navigationController.viewControllers = [viewController]
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.showOnBoardingIfNeeded(navigationController: dashboardViewController)
+            self.showOnBoardingIfNeeded()
         }
         
         return Maybe.never()
     }
     
-    func showOnBoardingIfNeeded(navigationController: UINavigationController) {
+    func showOnBoardingIfNeeded() {
         guard self.dataManager.get(key: SettingKey.onBoardingData, type: OnBoardingData.self) == nil else { return }
         
         let coordinator = AppDelegate.container.resolve(OnBoardingCoordinator.self)!
-        coordinator.navigationController = navigationController
+        coordinator.navigationController = self.navigationController
         
         self.coordinate(to: coordinator)
             .subscribe()

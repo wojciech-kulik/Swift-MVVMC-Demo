@@ -6,6 +6,8 @@ class SettingsCoordinator: BaseCoordinator<Void> {
     
     private let settingsViewModel: SettingsViewModel
     
+    var navigationController = UINavigationController()
+    
     init(settingsViewModel: SettingsViewModel) {
         self.settingsViewModel = settingsViewModel
     }
@@ -13,10 +15,8 @@ class SettingsCoordinator: BaseCoordinator<Void> {
     override func start() -> Maybe<Void> {
         let viewController = SettingsViewController.instantiate()
         viewController.viewModel = self.settingsViewModel
-        let navigationController = BaseNavigationController(rootViewController: viewController)
         
-        ViewControllerUtils.setRootViewController(viewController: navigationController,
-                                                  withAnimation: false)
+        self.navigationController.viewControllers = [viewController]
         
         return Maybe.never()
     }
