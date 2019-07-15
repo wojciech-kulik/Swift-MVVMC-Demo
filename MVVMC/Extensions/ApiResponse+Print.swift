@@ -10,7 +10,7 @@ extension ApiResponse {
         }
         
         if self.error == nil {
-            Logger.trace(message)
+            Logger.debug(message)
         }
     }
 }

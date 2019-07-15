@@ -52,7 +52,7 @@ class DrawerMenuViewController: UIViewController, Storyboarded {
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     self.dismiss(animated: true) {
-                        let selectedScreen = SelectedScreen(rawValue: indexPath.row) ?? .none
+                        let selectedScreen = DrawerMenuScreen(rawValue: indexPath.row) ?? .dashboard
                         self.viewModel?.didSelectScreen.onNext(selectedScreen)
                     }
                 }

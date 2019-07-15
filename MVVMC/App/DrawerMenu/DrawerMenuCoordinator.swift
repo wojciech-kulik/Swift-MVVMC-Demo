@@ -26,7 +26,7 @@ class DrawerMenuCoordinator: BaseCoordinator<Void> {
         return Maybe.never()
     }
     
-    func selectScreen(_ screen: SelectedScreen) {
+    func selectScreen(_ screen: DrawerMenuScreen) {
         Logger.info("Selected screen: \(screen)")
         
         switch screen {

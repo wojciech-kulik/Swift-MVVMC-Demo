@@ -6,7 +6,7 @@ class DrawerMenuViewModel {
     private let sessionService: SessionService
     private let dataManager: DataManager
     
-    let didSelectScreen = BehaviorSubject(value: SelectedScreen.dashboard)
+    let didSelectScreen = BehaviorSubject(value: DrawerMenuScreen.dashboard)
     
     var fullName: String {
         guard let onBoarding = self.dataManager.get(key: SettingKey.onBoardingData, type: OnBoardingData.self) else { return "n/a" }

@@ -3,6 +3,10 @@ import RxSwift
 
 class SessionService {
     
+    enum SessionError: Error {
+        case invalidToken
+    }
+    
     // MARK: - Private fields
     
     private let dataManager: DataManager
@@ -17,7 +21,7 @@ class SessionService {
     
     // MARK: - Public properties
     
-    private(set) var sessionState: SessionState?
+    private(set) var sessionState: Session?
     
     var didSignOut: Observable<Void> {
         return self.signOutSubject.asObservable()
@@ -32,13 +36,6 @@ class SessionService {
         self.dataManager = dataManager
         self.restClient = restClient
         self.translationsService = translationsService
-        
-        self.restClient.sessionDidExpire
-            .subscribe { [weak self] _ in
-                Logger.info("Session expired")
-                self?.removeSession()
-            }
-            .disposed(by: self.disposeBag)
         
         self.loadSession()
     }
@@ -74,7 +71,7 @@ class SessionService {
     
     private func setToken(response: SignInResponse) throws {
         guard let accessToken = response.accessToken, let tokenType = response.tokenType else {
-            throw BackendError.requestFailed(statusCode: nil, rawResponse: nil)
+            throw SessionError.invalidToken
         }
         
         self.token = Token(token: accessToken, tokenType: tokenType)
@@ -82,10 +79,10 @@ class SessionService {
     
     private func setSession(credentials: Credentials, response: MeResponse) throws {
         guard let token = self.token else {
-            throw BackendError.requestFailed(statusCode: nil, rawResponse: nil)
+            throw SessionError.invalidToken
         }
         
-        self.sessionState = SessionState(
+        self.sessionState = Session(
             token: token,
             email: credentials.username.lowercased(),
             profile: response)
@@ -95,7 +92,7 @@ class SessionService {
     }
     
     private func loadSession() {
-        self.sessionState = self.dataManager.get(key: SettingKey.session, type: SessionState.self)
+        self.sessionState = self.dataManager.get(key: SettingKey.session, type: Session.self)
     }
     
     private func removeSession() {

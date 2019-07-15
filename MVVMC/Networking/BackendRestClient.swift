@@ -3,68 +3,49 @@ import RxSwift
 
 class BackendRestClient {
     
-    private static let basicToken = "Basic 1234"
-    private let sessionDidExpireSubject = PublishSubject<Void>()
-    
     private let httpClient: HttpClient
-    private let errorHandler: ErrorHandler
+    private let alertDispatcher: AlertDispatcher
     private lazy var sessionService: SessionService? = AppDelegate.container.resolve(SessionService.self)
     
-    var sessionDidExpire: Observable<Void> {
-        return self.sessionDidExpireSubject.asObservable()
+    private var token: String? {
+        return self.sessionService?.sessionState?.token.getToken()
     }
     
-    init(httpClient: HttpClient, errorHandler: ErrorHandler) {
+    init(httpClient: HttpClient, alertDispatcher: AlertDispatcher) {
         self.httpClient = httpClient
-        self.errorHandler = errorHandler
+        self.alertDispatcher = alertDispatcher
     }
-    
-    // MARK: API request
     
     func request<T:Codable>(_ request: ApiRequest) -> Single<T>{
 
         return Single.create { single in
-            self.httpClient.set(headers: self.getHeaders(for: request))
+            self.httpClient.set(headers: self.getHeaders())
             self.httpClient.request(
                 resource: request.resource,
                 method: request.method,
-                json: request.json,
-                form: request.form) { self.process(response: $0, for: request, single: single) }
+                json: request.json)
+            {
+                self.validate(response: $0, for: request, single: single)
+            }
             
             return Disposables.create()
         }
     }
     
-    // MARK: Private Methods
-    
-    private func process<T:Codable>(response: ApiResponse, for request: ApiRequest, single: Single<T>.SingleObserver) {
+    private func validate<T:Codable>(response: ApiResponse, for request: ApiRequest, single: Single<T>.SingleObserver) {
         response.print()
         
-        guard response.success else {
-            DebugUtils.log(error: response.error)
-            let error = BackendError.requestFailed(statusCode: response.statusCode, rawResponse: response.data)
-            dispatchError(request: request, error: error)
-            single(.error(error))
-            return
-        }
-
-        guard request is SessionEndpoints.SignIn || response.statusCode != RestApiStatusCodes.unauthorized.rawValue else {
-            let error = BackendError.unauthorized(rawResponse: response.data)
-            dispatchError(request: request, error: error)
-            single(.error(error))
-            self.sessionDidExpireSubject.onNext(Void())
-            return
-        }
-        
-        guard response.statusCode == request.expectedCode else {
-            let error = BackendError.invalidStatusCode(statusCode: response.statusCode, rawResponse: response.data)
+        guard response.success && response.statusCode == request.expectedCode else {
+            Logger.error("Unsuccessful request", error: response.error)
+            let error = ApiError.requestFailed(statusCode: response.statusCode, response: response.data)
             dispatchError(request: request, error: error)
             single(.error(error))
             return
         }
         
         guard let parsedResponse = response.data?.toObject(T.self) else {
-            let error = BackendError.requestFailed(statusCode: nil, rawResponse: response.data)
+            Logger.info("Could not parse response")
+            let error = ApiError.requestFailed(statusCode: response.statusCode, response: response.data)
             dispatchError(request: request, error: error)
             single(.error(error))
             return
@@ -73,32 +54,28 @@ class BackendRestClient {
         single(.success(parsedResponse))
     }
     
-    private func dispatchError(request: ApiRequest, error: Error) {
-        let message = self.getErrorMessage(error: error)
-        self.errorHandler.handle(error: message)
+    private func getHeaders() -> [String:String] {
+        var headers = ["Content-Type": "application/json"]
+        if let tokenHeader = self.token {
+            headers["Authorization"] = tokenHeader
+        }
+        return headers
     }
     
-    private func getHeaders(for request: ApiRequest) -> [String:String] {
-        return [
-            "Content-Type": request.contentType,
-            "Authorization": self.getAuthorizationHeader(for: request)]
+    private func dispatchError(request: ApiRequest, error: ApiError) {
+        let message = self.getMessage(error: error)
+        self.alertDispatcher.dispatch(error: message)
     }
     
-    private func getAuthorizationHeader(for request: ApiRequest) -> String {
-        if request is SessionEndpoints.SignIn {
-            return BackendRestClient.basicToken
+    private func getMessage(error: ApiError) -> AlertMessage {
+        var message = "Could not process request."
+        
+        if case .requestFailed(_, let response) = error,
+            let errorResponse = response?.toObject(ErrorResponse.self)?.errorCode?.localized {
+            message = errorResponse
         }
 
-        if let tokenHeader = self.sessionService?.sessionState?.token.getTokenHeader() {
-            return tokenHeader
-        }
-        
-        return BackendRestClient.basicToken
-    }
-    
-    private func getErrorMessage(error: Error) -> ErrorMessage {
-        let message = ApiUtils.getApiErrorMessage(from: error) ?? "Could not process request."
-        let errorMessage = ErrorMessage(title: "Error", message: message, buttons: ["OK"], actions: [:])
-        return errorMessage
+        let alertMessage = AlertMessage(title: "Error", message: message, buttons: ["OK"], actions: [:])
+        return alertMessage
     }
 }

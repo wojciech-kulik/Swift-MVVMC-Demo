@@ -6,19 +6,13 @@ public class Logger {
         case error
         case info
         case debug
-        case trace
     }
     
-    static var logLevel = LogLevel.trace
+    static var logLevel = LogLevel.debug
     
     public static func debug(_ message: String) {
         guard logLevel.rawValue >= LogLevel.debug.rawValue else { return }
         log("\(getDate()) | DEBUG | \(message)")
-    }
-    
-    public static func trace(_ message: String) {
-        guard logLevel.rawValue >= LogLevel.trace.rawValue else { return }
-        log("\(getDate()) | TRACE | \(message)")
     }
     
     public static func info(_ message: String) {

@@ -1,6 +1,6 @@
 import Foundation
 
-struct SessionState: Codable, Equatable {
+struct Session: Codable, Equatable {
     private(set) var token: Token
     private(set) var email: String
     private(set) var profile: MeResponse

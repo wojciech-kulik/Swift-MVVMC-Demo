@@ -12,7 +12,7 @@ class ViewControllerWithSideMenu: UIViewController {
         self.panGesture = SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
         self.edgeGesture = SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view, forMenu: .left)
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "menu"), style: .plain, target: self, action: #selector(self.hamburgerMenuClicked))
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "menu"), style: .plain, target: self, action: #selector(self.hamburgerMenuClicked))
         self.navigationItem.leftBarButtonItem?.accessibilityIdentifier = "menuButton"
     }
     

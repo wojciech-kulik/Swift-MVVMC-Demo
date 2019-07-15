@@ -13,4 +13,11 @@ class LocalizedButton: FancyButton {
         }
         self.setTitle(self.upperText ? self.localizationKey?.localizedUpper : self.localizationKey?.localized)
     }
+    
+    private func setTitle(_ title: String?) {
+        UIView.performWithoutAnimation {
+            self.setTitle(title, for: .normal)
+            self.layoutIfNeeded()
+        }
+    }
 }

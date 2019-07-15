@@ -5,7 +5,7 @@ class HttpClientMock: HttpClient {
     func set(headers: [String : String]) {
     }
     
-    func request(resource: String, method: HttpMethod, json: Data?, form: [String : String]?,
+    func request(resource: String, method: HttpMethod, json: Data?,
                  completion: @escaping (ApiResponse) -> Void) {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
@@ -15,7 +15,7 @@ class HttpClientMock: HttpClient {
                     request.password == "pass" {
                     completion(self.getResponse(200, resource, method, "{ \"accessToken\": \"12345678\", \"tokenType\": \"bearer\" }"))
                 } else {
-                    completion(self.getResponse(401, resource, method, "{ \"errorCode\": \"InvalidCredentials\" }"))
+                    completion(self.getResponse(403, resource, method, "{ \"errorCode\": \"InvalidCredentials\" }"))
                 }
             } else if resource == "me" {
                 completion(self.getResponse(200, resource, method, "{ \"userId\": \"1234-2131-1234\" }"))

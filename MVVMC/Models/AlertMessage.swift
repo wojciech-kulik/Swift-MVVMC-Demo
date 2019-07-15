@@ -1,7 +1,7 @@
 import Foundation
 
-struct ErrorMessage: Equatable {
-    static func == (lhs: ErrorMessage, rhs: ErrorMessage) -> Bool {
+struct AlertMessage: Equatable {
+    static func == (lhs: AlertMessage, rhs: AlertMessage) -> Bool {
         return lhs.title == rhs.title && lhs.message == rhs.message
     }
     
