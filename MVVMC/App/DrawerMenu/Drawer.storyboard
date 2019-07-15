@@ -10,22 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Main View Controller-->
-        <scene sceneID="Sli-2N-OsX">
-            <objects>
-                <viewController storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="nji-4f-Ola" customClass="MainViewController" customModule="MVVMC" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="oeJ-bi-9gZ">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="7X4-Oc-yhN"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="SZF-h9-eJA"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="twY-p0-D4h" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-612" y="-833"/>
-        </scene>
         <!--Drawer Menu View Controller-->
         <scene sceneID="2Qb-at-nQf">
             <objects>

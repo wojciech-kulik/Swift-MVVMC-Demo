@@ -1,10 +1,8 @@
 import Foundation
 import RxSwift
+import UIKit
 
 class DashboardCoordinator: BaseCoordinator<Void> {
-    
-    var mainViewController: MainViewController!
-    var dashboardViewController: BaseNavigationController!
     
     private let dashboardViewModel: DashboardViewModel
     private let dataManager: DataManager
@@ -17,27 +15,26 @@ class DashboardCoordinator: BaseCoordinator<Void> {
     override func start() -> Maybe<Void> {
         let viewController = DashboardViewController.instantiate()
         viewController.viewModel = self.dashboardViewModel
+        let dashboardViewController = BaseNavigationController(rootViewController: viewController)
         
-        self.dashboardViewController = BaseNavigationController(rootViewController: viewController)
-        self.mainViewController.display(viewController: self.dashboardViewController)
+        ViewControllerUtils.setRootViewController(viewController: dashboardViewController,
+                                                  withAnimation: false)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.showOnBoardingIfNeeded()
+            self.showOnBoardingIfNeeded(navigationController: dashboardViewController)
         }
         
         return Maybe.never()
     }
     
-    func showOnBoardingIfNeeded() {
+    func showOnBoardingIfNeeded(navigationController: UINavigationController) {
         guard self.dataManager.get(key: SettingKey.onBoardingData, type: OnBoardingData.self) == nil else { return }
         
         let coordinator = AppDelegate.container.resolve(OnBoardingCoordinator.self)!
-        coordinator.navigationController = self.dashboardViewController
+        coordinator.navigationController = navigationController
         
         self.coordinate(to: coordinator)
-            .subscribe(onSuccess: { [weak self] _ in
-                self?.dashboardViewController.dismiss(animated: true, completion: nil)
-            })
+            .subscribe()
             .disposed(by: self.disposeBag)
     }
 }

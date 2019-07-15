@@ -4,7 +4,7 @@ import UIKit
 
 class OnBoardingCoordinator: BaseCoordinator<OnBoardingData> {
     
-    var navigationController: BaseNavigationController!
+    var navigationController: UINavigationController!
     var onBoardingViewController: BaseNavigationController!
     
     private let dataManager: DataManager
@@ -41,6 +41,7 @@ class OnBoardingCoordinator: BaseCoordinator<OnBoardingData> {
     
     private func didFinishOnBoarding(with data: OnBoardingData) {
         self.dataManager.set(key: SettingKey.onBoardingData, value: data)
+        self.onBoardingViewController.dismiss(animated: true, completion: nil)
         self.onBoardingFinished.onNext(data)
     }
     

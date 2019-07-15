@@ -16,7 +16,6 @@ class SignInCoordinator: BaseCoordinator<Void> {
         viewController.viewModel = viewModel
         
         ViewControllerUtils.setRootViewController(
-            window: UIApplication.shared.windows.first,
             viewController: viewController,
             withAnimation: true)
         

@@ -1,9 +1,9 @@
 import Foundation
 import RxSwift
+import UIKit
 
 class SettingsCoordinator: BaseCoordinator<Void> {
     
-    var mainViewController: MainViewController!
     private let settingsViewModel: SettingsViewModel
     
     init(settingsViewModel: SettingsViewModel) {
@@ -13,8 +13,10 @@ class SettingsCoordinator: BaseCoordinator<Void> {
     override func start() -> Maybe<Void> {
         let viewController = SettingsViewController.instantiate()
         viewController.viewModel = self.settingsViewModel
+        let navigationController = BaseNavigationController(rootViewController: viewController)
         
-        self.mainViewController.display(viewController: BaseNavigationController(rootViewController: viewController))
+        ViewControllerUtils.setRootViewController(viewController: navigationController,
+                                                  withAnimation: false)
         
         return Maybe.never()
     }

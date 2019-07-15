@@ -6,6 +6,10 @@ class AppCoordinator: BaseCoordinator<Void> {
 
     private let sessionService: SessionService
     
+    private var drawerMenu: UISideMenuNavigationController? {
+        return SideMenuManager.default.menuLeftNavigationController
+    }
+    
     init(sessionService: SessionService) {
         self.sessionService = sessionService
     }
@@ -29,10 +33,10 @@ class AppCoordinator: BaseCoordinator<Void> {
             .subscribe(onNext: { [weak self] in
                 guard let `self` = self else { return }
                 
-                if SideMenuManager.default.menuLeftNavigationController?.isHidden ?? true {
+                if self.drawerMenu?.isHidden ?? true {
                     self.showSignIn()
                 } else {
-                    SideMenuManager.default.menuLeftNavigationController?.dismiss(animated: true, completion: self.showSignIn)
+                    self.drawerMenu?.dismiss(animated: true, completion: self.showSignIn)
                 }
             })
             .disposed(by: self.disposeBag)

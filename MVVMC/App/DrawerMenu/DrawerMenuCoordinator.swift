@@ -5,7 +5,6 @@ import SideMenu
 
 class DrawerMenuCoordinator: BaseCoordinator<Void> {
     
-    private weak var mainViewController: MainViewController?
     private let sessionService: SessionService
     private let drawerMenuViewModel: DrawerMenuViewModel
     
@@ -15,22 +14,14 @@ class DrawerMenuCoordinator: BaseCoordinator<Void> {
     }
     
     override func start() -> Maybe<Void> {
-        self.mainViewController = MainViewController.instantiate()
-        
-        drawerMenuViewModel.didSelectScreen
+        self.drawerMenuViewModel.didSelectScreen
             .distinctUntilChanged()
-            .subscribe(onNext: { [weak self] screen in
-                self?.selectScreen(screen)
-            })
+            .subscribe(onNext: { [weak self] screen in self?.selectScreen(screen) })
             .disposed(by: self.disposeBag)
         
-        let menuViewController = SideMenuManager.default.menuLeftNavigationController?.topViewController as? DrawerMenuViewController
-        menuViewController?.viewModel = drawerMenuViewModel
-        
-        ViewControllerUtils.setRootViewController(
-            window: UIApplication.shared.windows.first,
-            viewController: self.mainViewController!,
-            withAnimation: true)
+        let drawerMenu = SideMenuManager.default.menuLeftNavigationController
+        let menuViewController = drawerMenu?.topViewController as? DrawerMenuViewController
+        menuViewController?.viewModel = self.drawerMenuViewModel
         
         return Maybe.never()
     }
@@ -42,7 +33,6 @@ class DrawerMenuCoordinator: BaseCoordinator<Void> {
         case .dashboard:
             self.removeChildCoordinators()
             let coordinator = AppDelegate.container.resolve(DashboardCoordinator.self)!
-            coordinator.mainViewController = self.mainViewController
             self.coordinate(to: coordinator)
                 .subscribe()
                 .disposed(by: self.disposeBag)
@@ -50,7 +40,6 @@ class DrawerMenuCoordinator: BaseCoordinator<Void> {
         case .settings:
             self.removeChildCoordinators()
             let coordinator = AppDelegate.container.resolve(SettingsCoordinator.self)!
-            coordinator.mainViewController = self.mainViewController
             self.coordinate(to: coordinator)
                 .subscribe()
                 .disposed(by: self.disposeBag)
