@@ -1,6 +1,6 @@
 import Foundation
 
-public class Logger {
+class Logger {
     enum LogLevel: Int {
         case none
         case error
@@ -10,22 +10,22 @@ public class Logger {
     
     static var logLevel = LogLevel.debug
     
-    public static func debug(_ message: String) {
+    static func debug(_ message: String) {
         guard logLevel.rawValue >= LogLevel.debug.rawValue else { return }
         log("\(getDate()) | DEBUG | \(message)")
     }
     
-    public static func info(_ message: String) {
+    static func info(_ message: String) {
         guard logLevel.rawValue >= LogLevel.info.rawValue else { return }
         log("\(getDate()) | INFO | \(message)")
     }
     
-    public static func error(_ message: String) {
+    static func error(_ message: String) {
         guard logLevel.rawValue >= LogLevel.error.rawValue else { return }
         log("\(getDate()) | ERROR | \(message)")
     }
     
-    public static func error(_ message: String, error: Error?) {
+    static func error(_ message: String, error: Error?) {
         guard logLevel.rawValue >= LogLevel.error.rawValue else { return }
         if error != nil {
             log("\(getDate()) | ERROR | \(message)\n\(error!)")

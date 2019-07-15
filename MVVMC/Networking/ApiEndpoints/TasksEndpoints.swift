@@ -2,7 +2,7 @@ import Foundation
 
 enum TasksEndpoints {
 	
-    class FetchTasks: BaseApiRequest<[String]> {
+    class FetchTasks: ApiRequest<[String]> {
         init() {
             super.init(resource: "tasks")
         }

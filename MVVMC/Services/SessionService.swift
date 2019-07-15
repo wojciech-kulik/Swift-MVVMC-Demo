@@ -41,8 +41,8 @@ class SessionService {
     }
     
     func signIn(credentials: Credentials) -> Completable {
-        let signIn = self.restClient.request(SessionEndpoints.SignIn(credentials: credentials)) as Single<SignInResponse>
-        let fetchMe = self.restClient.request(SessionEndpoints.FetchMe()) as Single<MeResponse>
+        let signIn = self.restClient.request(SessionEndpoints.SignIn(credentials: credentials))
+        let fetchMe = self.restClient.request(SessionEndpoints.FetchMe())
         
         return self.translationsService.fetchTranslations()
             .andThen(signIn)
@@ -53,7 +53,7 @@ class SessionService {
     }
     
     func signOut() -> Completable {
-        let signOut = self.restClient.request(SessionEndpoints.SignOut()) as Single<VoidResponse>
+        let signOut = self.restClient.request(SessionEndpoints.SignOut())
         
         return signOut
             .do(onSuccess: { [weak self] _ in self?.removeSession() })
@@ -61,7 +61,7 @@ class SessionService {
     }
     
     func refreshProfile() -> Single<MeResponse> {
-        let fetchMe = self.restClient.request(SessionEndpoints.FetchMe()) as Single<MeResponse>
+        let fetchMe = self.restClient.request(SessionEndpoints.FetchMe())
         
         return fetchMe
             .do(onSuccess: { [weak self] in self?.updateProfile(data: $0) })

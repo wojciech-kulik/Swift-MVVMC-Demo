@@ -2,7 +2,7 @@ import Foundation
 
 enum GeneralEndpoints {
     
-    class FetchTranslations: BaseApiRequest<TranslationsResponse> {
+    class FetchTranslations: ApiRequest<TranslationsResponse> {
         init() {
             super.init(resource: "translations")
         }

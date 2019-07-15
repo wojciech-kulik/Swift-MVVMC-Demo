@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol DataManager {
+protocol DataManager {
     
     func get<T>(key: String, type: T.Type) -> T? where T : Codable
     

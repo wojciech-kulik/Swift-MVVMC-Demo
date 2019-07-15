@@ -1,8 +1,8 @@
 import Foundation
 
-public struct FileUtils {
+struct FileUtils {
     
-    public static func loadTextFile(with name: String, ofType type: String) -> String? {
+    static func loadTextFile(with name: String, ofType type: String) -> String? {
         guard let path = Bundle.main.path(forResource: name, ofType: type) else { return nil }
         
         do {

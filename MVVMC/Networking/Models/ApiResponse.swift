@@ -1,16 +1,18 @@
 import Foundation
 
-public struct ApiResponse {
-    public let success: Bool
-    public let statusCode: Int?
+struct VoidResponse: Codable { }
+
+struct ApiResponse {
+    let success: Bool
+    let statusCode: Int?
     
-    public let requestUrl: String
-    public let method: HttpMethod
+    let requestUrl: String
+    let method: HttpMethod
     
-    public let data: Data?
-    public let error: Error?
+    let data: Data?
+    let error: Error?
     
-    public init(success: Bool, statusCode: Int?, requestUrl: String, method: HttpMethod, data: Data?, error: Error?) {
+    init(success: Bool, statusCode: Int?, requestUrl: String, method: HttpMethod, data: Data?, error: Error?) {
         self.success = success
         self.statusCode = statusCode
         self.requestUrl = requestUrl

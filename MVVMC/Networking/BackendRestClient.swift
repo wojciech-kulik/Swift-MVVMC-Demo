@@ -16,7 +16,7 @@ class BackendRestClient {
         self.alertDispatcher = alertDispatcher
     }
     
-    func request<T:Codable>(_ request: ApiRequest) -> Single<T>{
+    func request<T:Codable>(_ request: ApiRequest<T>) -> Single<T>{
 
         return Single.create { single in
             self.httpClient.set(headers: self.getHeaders())
@@ -32,21 +32,21 @@ class BackendRestClient {
         }
     }
     
-    private func validate<T:Codable>(response: ApiResponse, for request: ApiRequest, single: Single<T>.SingleObserver) {
+    private func validate<T:Codable>(response: ApiResponse, for request: ApiRequest<T>, single: Single<T>.SingleObserver) {
         response.print()
         
         guard response.success && response.statusCode == request.expectedCode else {
             Logger.error("Unsuccessful request", error: response.error)
             let error = ApiError.requestFailed(statusCode: response.statusCode, response: response.data)
-            dispatchError(request: request, error: error)
+            self.dispatch(error: error)
             single(.error(error))
             return
         }
         
         guard let parsedResponse = response.data?.toObject(T.self) else {
-            Logger.info("Could not parse response")
+            Logger.error("Could not parse response")
             let error = ApiError.requestFailed(statusCode: response.statusCode, response: response.data)
-            dispatchError(request: request, error: error)
+            self.dispatch(error: error)
             single(.error(error))
             return
         }
@@ -62,7 +62,7 @@ class BackendRestClient {
         return headers
     }
     
-    private func dispatchError(request: ApiRequest, error: ApiError) {
+    private func dispatch(error: ApiError) {
         let message = self.getMessage(error: error)
         self.alertDispatcher.dispatch(error: message)
     }

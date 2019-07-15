@@ -23,7 +23,7 @@ class TranslationsService {
     }
     
     func fetchTranslations() -> Completable {
-        let request = self.restClient.request(GeneralEndpoints.FetchTranslations()) as Single<TranslationsResponse>
+        let request = self.restClient.request(GeneralEndpoints.FetchTranslations())
         
         return request
             .do(onSuccess: { [weak self] response in

@@ -2,7 +2,7 @@ import Foundation
 
 enum SessionEndpoints {
     
-    class SignIn: BaseApiRequest<SignInResponse> {
+    class SignIn: ApiRequest<SignInResponse> {
         init(credentials: Credentials) {
             super.init(resource: "login",
                        method: .post,
@@ -10,14 +10,14 @@ enum SessionEndpoints {
         }
     }
     
-    class SignOut: BaseApiRequest<VoidResponse> {
+    class SignOut: ApiRequest<VoidResponse> {
         init() {
             super.init(resource: "logout",
                        method: .post)
         }
     }
     
-    class FetchMe: BaseApiRequest<MeResponse> {
+    class FetchMe: ApiRequest<MeResponse> {
         init() {
             super.init(resource: "me")
         }

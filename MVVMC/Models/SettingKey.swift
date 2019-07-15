@@ -1,7 +1,7 @@
 import Foundation
 
-public struct SettingKey {
-    public static let session = "session"
-    public static let translations = "translations"
-    public static let onBoardingData = "onBoardingData"
+struct SettingKey {
+    static let session = "session"
+    static let translations = "translations"
+    static let onBoardingData = "onBoardingData"
 }

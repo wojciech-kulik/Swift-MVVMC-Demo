@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol HttpClient {
+protocol HttpClient {
     
     func set(headers: [String:String])
     
