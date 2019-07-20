@@ -3,6 +3,8 @@ Sample iOS application in Swift presenting usage of MVVM-C pattern.
 
 ![](https://github.com/wojciech-kulik/Swift-MVVMC-Demo/blob/master/screenshots.png)
 
+If you want to check out just a simple MVVM-C pattern without extra features, please see this repository: [Swift-MVVMC-SimpleExample](https://github.com/wojciech-kulik/Swift-MVVMC-SimpleExample)
+
 ## Application Features
 - Sign in screen
 - Dashboard with sample data fetched from mocked backend
@@ -27,6 +29,10 @@ This project is POC for MVVM-C pattern where:
 
 `View` <- `ViewController` <- bindings -> (`ViewModel` -> `Model`) <- bindings -> `Coordinator`
 
+
+## Coordinators hierarchy
+![](https://github.com/wojciech-kulik/Swift-MVVMC-Demo/blob/master/coordinators.png)
+
 ## Pros
 - View doesn't contain logic, it just configures itself based on ViewModel.
 - ViewModel is UIKit independent and fully testable. Thanks to communication through RxSwift it doesn't know about Coordinator nor about View.
@@ -48,8 +54,9 @@ Project uses [Carthage](https://github.com/Carthage/Carthage) for dependencies, 
 Sample login screen accepts any e-mail address and password `pass`.
 
 ## References
-Read more about MVVM-C: 
+- [MVVM + Coordinators + RxSwift based on sample iOS application with authentication](https://wojciechkulik.pl/ios/mvvm-+-coordinators-+-rxswift-based-on-sample-ios-application-with-authentication)
 - [How to use MVVM, Coordinators, and RxSwift](https://hackernoon.com/how-to-use-mvvm-coordinators-and-rxswift-7364370b7b95)
+- [Simplified MVVM-C demo](https://github.com/wojciech-kulik/Swift-MVVMC-SimpleExample)
 
 You can also check out my another demo with Redux architecture:
 - https://github.com/wojciech-kulik/ReSwiftDemo
