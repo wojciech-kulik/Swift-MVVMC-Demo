@@ -54,7 +54,7 @@ Project uses [Carthage](https://github.com/Carthage/Carthage) for dependencies, 
 Sample login screen accepts any e-mail address and password `pass`.
 
 ## References
-- [MVVM + Coordinators + RxSwift based on sample iOS application with authentication](https://wojciechkulik.pl/ios/mvvm-+-coordinators-+-rxswift-based-on-sample-ios-application-with-authentication)
+- [MVVM + Coordinators + RxSwift based on sample iOS application with authentication](https://wojciechkulik.pl/ios/mvvm-coordinators-rxswift-and-sample-ios-application-with-authentication)
 - [How to use MVVM, Coordinators, and RxSwift](https://hackernoon.com/how-to-use-mvvm-coordinators-and-rxswift-7364370b7b95)
 - [Simplified MVVM-C demo](https://github.com/wojciech-kulik/Swift-MVVMC-SimpleExample)
 
