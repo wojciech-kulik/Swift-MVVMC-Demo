@@ -40,7 +40,7 @@ This project is POC for MVVM-C pattern where:
 - RxSwift may become hard in debugging once code complexity increases.
 
 ## Compilation
-Project uses [Carthage](https://github.com/Carthage/Carthagehttp:// "Carthage") for dependencies, so install it first and then run:
+Project uses [Carthage](https://github.com/Carthage/Carthage) for dependencies, so install it first and then run:
 
     carthage update --platform iOS --no-use-binaries
 
