@@ -7,8 +7,6 @@ class DashboardCoordinator: BaseCoordinator<Void> {
     private let dashboardViewModel: DashboardViewModel
     private let dataManager: DataManager
     
-    var navigationController = UINavigationController()
-    
     init(dashboardViewModel: DashboardViewModel, dataManager: DataManager) {
         self.dashboardViewModel = dashboardViewModel
         self.dataManager = dataManager

@@ -7,9 +7,7 @@ class DrawerMenuCoordinator: BaseCoordinator<Void> {
     
     private let sessionService: SessionService
     private let drawerMenuViewModel: DrawerMenuViewModel
-    
-    var navigationController = BaseNavigationController()
-    
+
     init(sessionService: SessionService, drawerMenuViewModel: DrawerMenuViewModel) {
         self.drawerMenuViewModel = drawerMenuViewModel
         self.sessionService = sessionService

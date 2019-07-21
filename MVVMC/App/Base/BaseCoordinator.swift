@@ -1,15 +1,17 @@
 import Foundation
+import UIKit
 import RxSwift
 
-protocol Coordinator {
+protocol Coordinator: AnyObject {
+    var navigationController: UINavigationController { get set }
     func removeChildCoordinators()
 }
 
 class BaseCoordinator<Result>: Coordinator {
-    let disposeBag = DisposeBag()
     
-    private let identifier = UUID()
-    private var childCoordinators = [UUID:Coordinator]()
+    let disposeBag = DisposeBag()
+    var navigationController = UINavigationController()
+    var childCoordinators = [Coordinator]()
     
     func coordinate<T>(to coordinator: BaseCoordinator<T>) -> Maybe<T> {
         self.store(coordinator: coordinator)
@@ -25,18 +27,17 @@ class BaseCoordinator<Result>: Coordinator {
     }
     
     func removeChildCoordinators() {
-        self.childCoordinators.forEach { tuple in
-            self.childCoordinators[tuple.key]?.removeChildCoordinators()
-        }
-        
+        self.childCoordinators.forEach { $0.removeChildCoordinators() }
         self.childCoordinators.removeAll()
     }
     
-    private func store<T>(coordinator: BaseCoordinator<T>) {
-        self.childCoordinators[coordinator.identifier] = coordinator
+    private func store(coordinator: Coordinator) {
+        self.childCoordinators += [coordinator]
     }
     
-    private func free<T>(coordinator: BaseCoordinator<T>) {
-        self.childCoordinators.removeValue(forKey: coordinator.identifier)
+    private func free(coordinator: Coordinator) {
+        if let index = self.childCoordinators.firstIndex(where: { $0 === coordinator }) {
+            self.childCoordinators.remove(at: index)
+        }
     }
 }

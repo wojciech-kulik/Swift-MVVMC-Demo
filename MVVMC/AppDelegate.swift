@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AppDelegate.container.registerDependencies()
         
         self.setUpSideMenu()
-        self.window = UIWindow(frame: UIScreen.main.bounds)
         
         self.appCoordinator = AppDelegate.container.resolve(AppCoordinator.self)!
         self.appCoordinator.start()

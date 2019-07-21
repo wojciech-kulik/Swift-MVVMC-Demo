@@ -5,6 +5,7 @@ import SideMenu
 class AppCoordinator: BaseCoordinator<Void> {
 
     private let sessionService: SessionService
+    private var window = UIWindow(frame: UIScreen.main.bounds)
     
     private var drawerMenu: UISideMenuNavigationController? {
         return SideMenuManager.default.menuLeftNavigationController
@@ -15,6 +16,8 @@ class AppCoordinator: BaseCoordinator<Void> {
     }
     
     override func start() -> Maybe<Void> {
+        self.window.makeKeyAndVisible()
+        
         self.sessionService.sessionState == nil
             ? self.showSignIn()
             : self.showDashboard()
@@ -51,6 +54,7 @@ class AppCoordinator: BaseCoordinator<Void> {
             .disposed(by: self.disposeBag)
         
         ViewControllerUtils.setRootViewController(
+            window: self.window,
             viewController: coordinator.navigationController,
             withAnimation: true)
     }
@@ -59,11 +63,13 @@ class AppCoordinator: BaseCoordinator<Void> {
         self.removeChildCoordinators()
         
         let coordinator = AppDelegate.container.resolve(DrawerMenuCoordinator.self)!
+        coordinator.navigationController = BaseNavigationController()
         self.coordinate(to: coordinator)
             .subscribe()
             .disposed(by: self.disposeBag)
         
         ViewControllerUtils.setRootViewController(
+            window: self.window,
             viewController: coordinator.navigationController,
             withAnimation: true)
     }

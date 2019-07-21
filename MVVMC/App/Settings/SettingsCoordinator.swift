@@ -6,8 +6,6 @@ class SettingsCoordinator: BaseCoordinator<Void> {
     
     private let settingsViewModel: SettingsViewModel
     
-    var navigationController = UINavigationController()
-    
     init(settingsViewModel: SettingsViewModel) {
         self.settingsViewModel = settingsViewModel
     }

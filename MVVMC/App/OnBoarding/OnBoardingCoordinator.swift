@@ -3,8 +3,7 @@ import RxSwift
 import UIKit
 
 class OnBoardingCoordinator: BaseCoordinator<OnBoardingData> {
-    
-    var navigationController: UINavigationController!
+
     var onBoardingViewController: BaseNavigationController!
     
     private let dataManager: DataManager

@@ -3,9 +3,8 @@ import UIKit
 
 enum ViewControllerUtils {
     
-    static func setRootViewController(viewController: UIViewController, withAnimation: Bool) {
-        guard let window = UIApplication.shared.windows.first else { return }
-        
+    static func setRootViewController(window: UIWindow, viewController: UIViewController, withAnimation: Bool) {
+
         if !withAnimation {
             window.rootViewController = viewController
             window.makeKeyAndVisible()
