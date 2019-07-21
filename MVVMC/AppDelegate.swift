@@ -1,13 +1,11 @@
 import UIKit
 import Swinject
 import SideMenu
-import RxSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
-    private let disposeBag = DisposeBag()
     private var appCoordinator: AppCoordinator!
     
     static let container = Container()
@@ -22,8 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         self.appCoordinator = AppDelegate.container.resolve(AppCoordinator.self)!
         self.appCoordinator.start()
-            .subscribe()
-            .disposed(by: self.disposeBag)
 
         return true
     }

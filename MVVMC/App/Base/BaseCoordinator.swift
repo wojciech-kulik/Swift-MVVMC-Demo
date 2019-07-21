@@ -1,29 +1,30 @@
 import Foundation
 import UIKit
-import RxSwift
 
 protocol Coordinator: AnyObject {
     var navigationController: UINavigationController { get set }
+    var parentCoordinator: Coordinator? { get set }
+    
+    func start()
+    func start(coordinator: Coordinator)
+    func didFinish(coordinator: Coordinator)
     func removeChildCoordinators()
 }
 
-class BaseCoordinator<Result>: Coordinator {
+class BaseCoordinator: Coordinator {
     
-    let disposeBag = DisposeBag()
     var navigationController = UINavigationController()
     var childCoordinators = [Coordinator]()
+    var parentCoordinator: Coordinator?
     
-    func coordinate<T>(to coordinator: BaseCoordinator<T>) -> Maybe<T> {
-        self.store(coordinator: coordinator)
-        return coordinator.start()
-            .do(onNext: { [weak self, weak coordinator] _ in
-                guard let coordinator = coordinator, let `self` = self else { return }
-                self.free(coordinator: coordinator)
-            })
+    func start() {
+        fatalError("Start method should be implemented.")
     }
     
-    func start() -> Maybe<Result> {
-        fatalError("Start method should be implemented.")
+    func start(coordinator: Coordinator) {
+        self.childCoordinators += [coordinator]
+        coordinator.parentCoordinator = self
+        coordinator.start()
     }
     
     func removeChildCoordinators() {
@@ -31,11 +32,7 @@ class BaseCoordinator<Result>: Coordinator {
         self.childCoordinators.removeAll()
     }
     
-    private func store(coordinator: Coordinator) {
-        self.childCoordinators += [coordinator]
-    }
-    
-    private func free(coordinator: Coordinator) {
+    func didFinish(coordinator: Coordinator) {
         if let index = self.childCoordinators.firstIndex(where: { $0 === coordinator }) {
             self.childCoordinators.remove(at: index)
         }

@@ -3,8 +3,9 @@ import RxSwift
 import RxCocoa
 import SideMenu
 
-class DrawerMenuCoordinator: BaseCoordinator<Void> {
+class DrawerMenuCoordinator: BaseCoordinator {
     
+    private let disposeBag = DisposeBag()
     private let sessionService: SessionService
     private let drawerMenuViewModel: DrawerMenuViewModel
 
@@ -13,7 +14,7 @@ class DrawerMenuCoordinator: BaseCoordinator<Void> {
         self.sessionService = sessionService
     }
     
-    override func start() -> Maybe<Void> {
+    override func start() {
         self.drawerMenuViewModel.didSelectScreen
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] screen in self?.selectScreen(screen) })
@@ -22,8 +23,6 @@ class DrawerMenuCoordinator: BaseCoordinator<Void> {
         let drawerMenu = SideMenuManager.default.menuLeftNavigationController
         let menuViewController = drawerMenu?.topViewController as? DrawerMenuViewController
         menuViewController?.viewModel = self.drawerMenuViewModel
-        
-        return Maybe.never()
     }
     
     func selectScreen(_ screen: DrawerMenuScreen) {
@@ -34,17 +33,13 @@ class DrawerMenuCoordinator: BaseCoordinator<Void> {
             self.removeChildCoordinators()
             let coordinator = AppDelegate.container.resolve(DashboardCoordinator.self)!
             coordinator.navigationController = self.navigationController
-            self.coordinate(to: coordinator)
-                .subscribe()
-                .disposed(by: self.disposeBag)
+            self.start(coordinator: coordinator)
             
         case .settings:
             self.removeChildCoordinators()
             let coordinator = AppDelegate.container.resolve(SettingsCoordinator.self)!
             coordinator.navigationController = self.navigationController
-            self.coordinate(to: coordinator)
-                .subscribe()
-                .disposed(by: self.disposeBag)
+            self.start(coordinator: coordinator)
             
         case .signOut:
             self.sessionService.signOut()

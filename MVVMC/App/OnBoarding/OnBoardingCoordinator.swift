@@ -2,14 +2,14 @@ import Foundation
 import RxSwift
 import UIKit
 
-class OnBoardingCoordinator: BaseCoordinator<OnBoardingData> {
+class OnBoardingCoordinator: BaseCoordinator {
 
     var onBoardingViewController: BaseNavigationController!
     
+    private let disposeBag = DisposeBag()
     private let dataManager: DataManager
     private let setNameViewModel: SetNameViewModel
     private let setOptionsViewModel: SetOptionsViewModel
-    private let onBoardingFinished = PublishSubject<OnBoardingData>()
     
     init(setNameViewModel: SetNameViewModel, setOptionsViewModel: SetOptionsViewModel,
          dataManager: DataManager) {
@@ -18,7 +18,7 @@ class OnBoardingCoordinator: BaseCoordinator<OnBoardingData> {
         self.dataManager = dataManager
     }
     
-    override func start() -> Maybe<OnBoardingData> {
+    override func start() {
         self.setUpBindings()
         
         let viewController = SetNameViewController.instantiate()
@@ -27,8 +27,6 @@ class OnBoardingCoordinator: BaseCoordinator<OnBoardingData> {
         self.onBoardingViewController = BaseNavigationController(rootViewController: viewController)
         self.onBoardingViewController.navigationBar.isHidden = true
         self.navigationController.presentOnTop(self.onBoardingViewController, animated: true)
-        
-        return self.onBoardingFinished.take(1).asMaybe()
     }
     
     private func didSetName() {
@@ -41,7 +39,7 @@ class OnBoardingCoordinator: BaseCoordinator<OnBoardingData> {
     private func didFinishOnBoarding(with data: OnBoardingData) {
         self.dataManager.set(key: SettingKey.onBoardingData, value: data)
         self.onBoardingViewController.dismiss(animated: true, completion: nil)
-        self.onBoardingFinished.onNext(data)
+        self.parentCoordinator?.didFinish(coordinator: self)
     }
     
     private func setUpBindings() {

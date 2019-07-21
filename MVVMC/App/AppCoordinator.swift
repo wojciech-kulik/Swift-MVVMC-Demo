@@ -2,8 +2,9 @@ import Foundation
 import RxSwift
 import SideMenu
 
-class AppCoordinator: BaseCoordinator<Void> {
+class AppCoordinator: BaseCoordinator {
 
+    private let disposeBag = DisposeBag()
     private let sessionService: SessionService
     private var window = UIWindow(frame: UIScreen.main.bounds)
     
@@ -15,7 +16,7 @@ class AppCoordinator: BaseCoordinator<Void> {
         self.sessionService = sessionService
     }
     
-    override func start() -> Maybe<Void> {
+    override func start() {
         self.window.makeKeyAndVisible()
         
         self.sessionService.sessionState == nil
@@ -23,8 +24,6 @@ class AppCoordinator: BaseCoordinator<Void> {
             : self.showDashboard()
         
         self.subscribeToSessionChanges()
-        
-        return Maybe.never()
     }
     
     private func subscribeToSessionChanges() {
@@ -49,9 +48,7 @@ class AppCoordinator: BaseCoordinator<Void> {
         self.removeChildCoordinators()
         
         let coordinator = AppDelegate.container.resolve(SignInCoordinator.self)!
-        self.coordinate(to: coordinator)
-            .subscribe()
-            .disposed(by: self.disposeBag)
+        self.start(coordinator: coordinator)
         
         ViewControllerUtils.setRootViewController(
             window: self.window,
@@ -64,9 +61,7 @@ class AppCoordinator: BaseCoordinator<Void> {
         
         let coordinator = AppDelegate.container.resolve(DrawerMenuCoordinator.self)!
         coordinator.navigationController = BaseNavigationController()
-        self.coordinate(to: coordinator)
-            .subscribe()
-            .disposed(by: self.disposeBag)
+        self.start(coordinator: coordinator)
         
         ViewControllerUtils.setRootViewController(
             window: self.window,

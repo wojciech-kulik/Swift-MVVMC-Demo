@@ -1,9 +1,7 @@
 import Foundation
 import UIKit
-import RxSwift
-import RxCocoa
 
-class SignInCoordinator: BaseCoordinator<Void> {
+class SignInCoordinator: BaseCoordinator {
     
     private let viewModel: SignInViewModel
     
@@ -11,13 +9,11 @@ class SignInCoordinator: BaseCoordinator<Void> {
         self.viewModel = viewModel
     }
     
-    override func start() -> Maybe<Void> {
+    override func start() {
         let viewController = SignInViewController.instantiate()
         viewController.viewModel = viewModel
         
         self.navigationController.isNavigationBarHidden = true
         self.navigationController.viewControllers = [viewController]
-
-        return Maybe.never()
     }
 }
