@@ -52,7 +52,7 @@ class FancyButton: UIButton {
             return UIEdgeInsets(top: 9, left: 40, bottom: 9, right: 40)
         }
         
-        set { }
+        set {}
     }
     
     var highlightedColor: UIColor {

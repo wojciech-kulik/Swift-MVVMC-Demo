@@ -11,8 +11,8 @@ class ApiRequest<T:Codable> {
          method: HttpMethod = .get,
          expectedCode: Int = 200,
          form: [String:String]? = nil,
-         json: Data? = nil) {
-        
+         json: Data? = nil
+    ) {
         self.resource = resource
         self.method = method
         self.expectedCode = expectedCode

@@ -22,7 +22,6 @@ import UIKit
     }
     
     private func setInProgress() {
-
         if isInProgress {
             inProgressView.translatesAutoresizingMaskIntoConstraints = false
             addSubview(inProgressView)
