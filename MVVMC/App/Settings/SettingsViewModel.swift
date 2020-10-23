@@ -2,7 +2,6 @@ import Foundation
 import RxSwift
 
 class SettingsViewModel {
-    
     private let dataManager: DataManager
     private let disposeBag = DisposeBag()
 	

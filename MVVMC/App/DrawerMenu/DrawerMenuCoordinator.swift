@@ -4,7 +4,6 @@ import RxCocoa
 import SideMenu
 
 class DrawerMenuCoordinator: BaseCoordinator {
-    
     private let disposeBag = DisposeBag()
     private let sessionService: SessionService
     private let drawerMenuViewModel: DrawerMenuViewModel
@@ -20,7 +19,7 @@ class DrawerMenuCoordinator: BaseCoordinator {
             .subscribe(onNext: { [weak self] screen in self?.selectScreen(screen) })
             .disposed(by: self.disposeBag)
         
-        let drawerMenu = SideMenuManager.default.menuLeftNavigationController
+        let drawerMenu = SideMenuManager.default.leftMenuNavigationController
         let menuViewController = drawerMenu?.topViewController as? DrawerMenuViewController
         menuViewController?.viewModel = self.drawerMenuViewModel
     }

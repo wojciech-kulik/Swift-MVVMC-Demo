@@ -1,7 +1,6 @@
 import Foundation
 
 enum LocalizationUtils {
-    
     private static var translationsService = AppDelegate.container.resolve(TranslationsService.self)!
     
     static var currentLocale: Locale {

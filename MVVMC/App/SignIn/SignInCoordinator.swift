@@ -2,7 +2,6 @@ import Foundation
 import UIKit
 
 class SignInCoordinator: BaseCoordinator {
-    
     private let viewModel: SignInViewModel
     
     init(viewModel: SignInViewModel) {

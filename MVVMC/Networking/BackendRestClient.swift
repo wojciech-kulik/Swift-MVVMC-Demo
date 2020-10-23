@@ -2,7 +2,6 @@ import Foundation
 import RxSwift
 
 class BackendRestClient {
-    
     private let httpClient: HttpClient
     private let alertDispatcher: AlertDispatcher
     private lazy var sessionService: SessionService? = AppDelegate.container.resolve(SessionService.self)

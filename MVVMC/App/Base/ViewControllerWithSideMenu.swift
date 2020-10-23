@@ -3,14 +3,13 @@ import UIKit
 import SideMenu
 
 class ViewControllerWithSideMenu: UIViewController {
-    
     var panGesture = UIPanGestureRecognizer()
-    var edgeGesture = [UIScreenEdgePanGestureRecognizer]()
+    var edgeGesture = UIScreenEdgePanGestureRecognizer()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.panGesture = SideMenuManager.default.menuAddPanGestureToPresent(toView: self.navigationController!.navigationBar)
-        self.edgeGesture = SideMenuManager.default.menuAddScreenEdgePanGesturesToPresent(toView: self.navigationController!.view, forMenu: .left)
+        self.panGesture = SideMenuManager.default.addPanGestureToPresent(toView: self.navigationController!.navigationBar)
+        self.edgeGesture = SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: self.navigationController!.view, forMenu: .left)
         
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "menu"), style: .plain, target: self, action: #selector(self.hamburgerMenuClicked))
         self.navigationItem.leftBarButtonItem?.accessibilityIdentifier = "menuButton"
@@ -28,16 +27,16 @@ class ViewControllerWithSideMenu: UIViewController {
     
     func disableSideMenu() {
         self.panGesture.isEnabled = false
-        self.edgeGesture.forEach { $0.isEnabled = false }
+        self.edgeGesture.isEnabled = false
     }
     
     func enableSideMenu() {
         self.panGesture.isEnabled = true
-        self.edgeGesture.forEach { $0.isEnabled = true }
+        self.edgeGesture.isEnabled = true
     }
     
     func showSideMenu() {
-        self.present(SideMenuManager.default.menuLeftNavigationController!, animated: true, completion: nil)
+        self.present(SideMenuManager.default.leftMenuNavigationController!, animated: true, completion: nil)
     }
     
     @objc func hamburgerMenuClicked() {

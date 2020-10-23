@@ -3,7 +3,6 @@ import RxSwift
 import UIKit
 
 class OnBoardingCoordinator: BaseCoordinator {
-
     var onBoardingViewController: BaseNavigationController!
     
     private let disposeBag = DisposeBag()
@@ -26,6 +25,7 @@ class OnBoardingCoordinator: BaseCoordinator {
         
         self.onBoardingViewController = BaseNavigationController(rootViewController: viewController)
         self.onBoardingViewController.navigationBar.isHidden = true
+        self.onBoardingViewController.modalPresentationStyle = .fullScreen
         self.navigationController.presentOnTop(self.onBoardingViewController, animated: true)
     }
     

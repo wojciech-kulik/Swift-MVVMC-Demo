@@ -2,7 +2,6 @@ import Foundation
 import RxSwift
 
 class SetNameViewModel {
-    
     private let disposeBag = DisposeBag()
     
     let firstName = BehaviorSubject(value: "")

@@ -3,7 +3,6 @@ import UIKit
 
 @IBDesignable
 class FancyButton: UIButton {
-    
     @IBInspectable var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius

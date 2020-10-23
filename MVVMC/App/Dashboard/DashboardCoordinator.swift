@@ -2,7 +2,6 @@ import Foundation
 import UIKit
 
 class DashboardCoordinator: BaseCoordinator {
-    
     private let dashboardViewModel: DashboardViewModel
     private let dataManager: DataManager
     

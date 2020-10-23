@@ -2,7 +2,6 @@ import Foundation
 import RxSwift
 
 class SessionService {
-    
     enum SessionError: Error {
         case invalidToken
     }

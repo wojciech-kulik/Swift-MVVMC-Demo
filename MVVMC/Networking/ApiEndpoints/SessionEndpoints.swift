@@ -1,7 +1,6 @@
 import Foundation
 
 enum SessionEndpoints {
-    
     class SignIn: ApiRequest<SignInResponse> {
         init(credentials: Credentials) {
             super.init(resource: "login",

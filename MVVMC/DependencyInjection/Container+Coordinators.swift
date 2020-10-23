@@ -1,7 +1,6 @@
 import Swinject
 
 extension Container {
-    
     func registerCoordinators() {
         self.autoregister(AppCoordinator.self, initializer: AppCoordinator.init)
         self.autoregister(SignInCoordinator.self, initializer: SignInCoordinator.init)

@@ -2,7 +2,6 @@ import Foundation
 import UIKit
 
 class AlertDispatcher {
-    
     private var lastError: AlertMessage?
     
     func dispatch(error: AlertMessage) {
@@ -15,7 +14,6 @@ class AlertDispatcher {
     }
     
     private func showAlert(on viewController: UIViewController, error: AlertMessage) {
-        
         let alert = UIAlertController(title: error.title.localized, message: error.message.localized, preferredStyle: .alert)
         
         for button in error.buttons {

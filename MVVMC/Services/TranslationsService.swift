@@ -2,7 +2,6 @@ import Foundation
 import RxSwift
 
 class TranslationsService {
-	
     private let dataManager: DataManager
     private let restClient: BackendRestClient
     

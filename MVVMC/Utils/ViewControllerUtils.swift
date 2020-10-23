@@ -2,7 +2,6 @@ import Foundation
 import UIKit
 
 enum ViewControllerUtils {
-    
     static func setRootViewController(window: UIWindow, viewController: UIViewController, withAnimation: Bool) {
 
         if !withAnimation {

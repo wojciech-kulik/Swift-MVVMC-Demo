@@ -3,7 +3,6 @@ import UIKit
 import RxSwift
 
 class SettingsViewController: ViewControllerWithSideMenu, Storyboarded {
-	
     static var storyboard = AppStoryboard.settings
     
     @IBOutlet weak var sendNotificationsSwitch: UISwitch!

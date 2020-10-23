@@ -3,7 +3,6 @@ import UIKit
 import RxSwift
 
 class SetNameViewController: UIViewController, Storyboarded {
-    
     static var storyboard = AppStoryboard.onBoarding
     private let disposeBag = DisposeBag()
     

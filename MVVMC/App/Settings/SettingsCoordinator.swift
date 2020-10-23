@@ -2,7 +2,6 @@ import Foundation
 import UIKit
 
 class SettingsCoordinator: BaseCoordinator {
-    
     private let settingsViewModel: SettingsViewModel
     
     init(settingsViewModel: SettingsViewModel) {

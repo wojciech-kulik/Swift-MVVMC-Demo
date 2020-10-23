@@ -3,7 +3,6 @@ import UIKit
 import RxSwift
 
 class DashboardViewController: ViewControllerWithSideMenu, Storyboarded {
-    
     static var storyboard = AppStoryboard.dashboard
     private let disposeBag = DisposeBag()
     

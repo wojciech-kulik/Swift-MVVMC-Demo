@@ -12,15 +12,12 @@ class DrawerMenuViewController: UIViewController, Storyboarded {
     
     private var selectedRow: Int = 0
     private let disposeBag = DisposeBag()
-    var viewModel: DrawerMenuViewModel? {
-        didSet {
-            self.setUpBindings()
-        }
-    }
+    var viewModel: DrawerMenuViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.tableFooterView = UIView()
+        self.setUpBindings()
     }
     
     override func viewWillAppear(_ animated: Bool) {

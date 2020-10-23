@@ -3,7 +3,6 @@ import Swinject
 import SwinjectAutoregistration
 
 extension Container {
-	
     func registerViewModels() {
         self.autoregister(SignInViewModel.self, initializer: SignInViewModel.init)
         self.autoregister(DrawerMenuViewModel.self, initializer: DrawerMenuViewModel.init)

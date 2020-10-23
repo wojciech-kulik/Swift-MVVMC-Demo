@@ -2,7 +2,6 @@ import Foundation
 import RxSwift
 
 class DashboardViewModel {
-	
     private let sessionService: SessionService
     private let disposeBag = DisposeBag()
     private let restClient: BackendRestClient

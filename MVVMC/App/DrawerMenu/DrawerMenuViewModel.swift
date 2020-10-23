@@ -1,7 +1,6 @@
 import RxSwift
 
 class DrawerMenuViewModel {
-	
     private let disposeBag = DisposeBag()
     private let sessionService: SessionService
     private let dataManager: DataManager

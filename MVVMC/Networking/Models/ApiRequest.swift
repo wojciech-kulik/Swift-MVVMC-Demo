@@ -1,7 +1,6 @@
 import Foundation
 
 class ApiRequest<T:Codable> {
-    
     let method: HttpMethod
     let resource: String
     let expectedCode: Int

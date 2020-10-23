@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -19,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fill Your Name" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39c-d1-pcE" customClass="LocalizedLabel" customModule="MVVMC" customModuleProvider="target">
-                                <rect key="frame" x="25" y="84" width="364" height="31.5"/>
+                                <rect key="frame" x="25" y="84" width="364" height="33.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -28,9 +26,9 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fL1-up-0qY" customClass="LocalizedTextField" customModule="MVVMC" customModuleProvider="target">
-                                <rect key="frame" x="60" y="194" width="294" height="30"/>
+                                <rect key="frame" x="60" y="196" width="294" height="34"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <accessibility key="accessibilityConfiguration" identifier="emailTextField"/>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
                                 <userDefinedRuntimeAttributes>
@@ -38,9 +36,9 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fTx-jz-UGa" customClass="LocalizedTextField" customModule="MVVMC" customModuleProvider="target">
-                                <rect key="frame" x="60" y="248" width="294" height="30"/>
+                                <rect key="frame" x="60" y="254" width="294" height="34"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <accessibility key="accessibilityConfiguration" identifier="passwordTextField"/>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES"/>
                                 <userDefinedRuntimeAttributes>
@@ -61,6 +59,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Pv9-JJ-Afn"/>
                         <color key="backgroundColor" red="0.081568567960000005" green="0.56862745100000001" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="fTx-jz-UGa" firstAttribute="leading" secondItem="Pv9-JJ-Afn" secondAttribute="leading" constant="60" id="CZU-oM-MlW"/>
@@ -76,7 +75,6 @@
                             <constraint firstItem="39c-d1-pcE" firstAttribute="top" secondItem="Pv9-JJ-Afn" secondAttribute="top" constant="40" id="myq-zK-fMq"/>
                             <constraint firstItem="Pv9-JJ-Afn" firstAttribute="trailing" secondItem="39c-d1-pcE" secondAttribute="trailing" constant="25" id="v2a-3r-qKe"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Pv9-JJ-Afn"/>
                     </view>
                     <navigationItem key="navigationItem" id="NuA-TR-oc7"/>
                     <connections>
@@ -98,7 +96,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adjust Settings" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1mr-eP-fUd" customClass="LocalizedLabel" customModule="MVVMC" customModuleProvider="target">
-                                <rect key="frame" x="25" y="84" width="364" height="31.5"/>
+                                <rect key="frame" x="25" y="84" width="364" height="33.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -107,7 +105,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mHc-YX-b3k" customClass="LocalizedButton" customModule="MVVMC" customModuleProvider="target">
-                                <rect key="frame" x="143" y="771" width="128" height="40"/>
+                                <rect key="frame" x="143.5" y="771" width="127" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <accessibility key="accessibilityConfiguration" identifier="loginButton"/>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -120,11 +118,11 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XZf-Ac-LHU">
-                                <rect key="frame" x="45" y="192" width="51" height="31"/>
+                                <rect key="frame" x="45" y="194" width="51" height="31"/>
                                 <color key="onTintColor" red="0.047058823529411764" green="0.78823529411764703" blue="0.76862745098039209" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MbL-g1-KZl" customClass="LocalizedLabel" customModule="MVVMC" customModuleProvider="target">
-                                <rect key="frame" x="117" y="196" width="156" height="23"/>
+                                <rect key="frame" x="117" y="198" width="155" height="23"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -133,11 +131,11 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FCO-z0-xJU">
-                                <rect key="frame" x="45" y="257" width="51" height="31"/>
+                                <rect key="frame" x="45" y="259" width="51" height="31"/>
                                 <color key="onTintColor" red="0.047058823530000002" green="0.78823529410000004" blue="0.76862745099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable Gps Tracking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3PJ-q3-yCi" customClass="LocalizedLabel" customModule="MVVMC" customModuleProvider="target">
-                                <rect key="frame" x="117" y="261" width="174.5" height="23"/>
+                                <rect key="frame" x="117" y="263" width="173" height="23"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -146,6 +144,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Wg5-Ip-9fN"/>
                         <color key="backgroundColor" red="0.081568567960000005" green="0.56862745100000001" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="3PJ-q3-yCi" firstAttribute="centerY" secondItem="FCO-z0-xJU" secondAttribute="centerY" id="8WK-a2-tOY"/>
@@ -164,7 +163,6 @@
                             <constraint firstItem="Wg5-Ip-9fN" firstAttribute="bottom" secondItem="mHc-YX-b3k" secondAttribute="bottom" constant="51" id="vHr-bK-6d4"/>
                             <constraint firstItem="1mr-eP-fUd" firstAttribute="top" secondItem="Wg5-Ip-9fN" secondAttribute="top" constant="40" id="wHi-fJ-ZwS"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Wg5-Ip-9fN"/>
                     </view>
                     <navigationItem key="navigationItem" id="vxH-dX-n5W"/>
                     <connections>
@@ -178,4 +176,12 @@
             <point key="canvasLocation" x="1806" y="128"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="4a9-Tb-Dhd">
+            <size key="intrinsicContentSize" width="118" height="40"/>
+        </designable>
+        <designable name="mHc-YX-b3k">
+            <size key="intrinsicContentSize" width="127" height="40"/>
+        </designable>
+    </designables>
 </document>
