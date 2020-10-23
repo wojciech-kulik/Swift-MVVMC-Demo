@@ -14,19 +14,19 @@ class DashboardViewModel {
         self.sessionService = sessionService
         self.restClient = restClient
         
-        self.sessionService.refreshProfile()
+        sessionService.refreshProfile()
             .subscribe()
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
-        self.fetchTasks()
+        fetchTasks()
     }
     
     private func fetchTasks() {
-        self.isLoading.onNext(true)
-        self.restClient.request(TasksEndpoints.FetchTasks())
+        isLoading.onNext(true)
+        restClient.request(TasksEndpoints.FetchTasks())
             .asDriver(onErrorJustReturn: [String]())
             .do(onNext: { [weak self] _ in self?.isLoading.onNext(false) })
-            .drive(self.tasks)
-            .disposed(by: self.disposeBag)
+            .drive(tasks)
+            .disposed(by: disposeBag)
     }
 }

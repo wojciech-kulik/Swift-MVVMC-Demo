@@ -12,12 +12,12 @@ class SettingsViewModel {
     init(dataManager: DataManager) {
         self.dataManager = dataManager
         
-        guard let onBoarding = self.dataManager.get(key: SettingKey.onBoardingData, type: OnBoardingData.self) else { return }
+        guard let onBoarding = dataManager.get(key: SettingKey.onBoardingData, type: OnBoardingData.self) else { return }
         
-        self.notifications.onNext(onBoarding.notifications)
-        self.gpsTracking.onNext(onBoarding.gpsTracking)
+        notifications.onNext(onBoarding.notifications)
+        gpsTracking.onNext(onBoarding.gpsTracking)
         
-        Observable.combineLatest(self.notifications, self.gpsTracking)
+        Observable.combineLatest(notifications, gpsTracking)
             .subscribe(onNext: { [weak self] notifications, gpsTracking in
                 guard let onBoarding = self?.dataManager.get(key: SettingKey.onBoardingData, type: OnBoardingData.self) else { return }
 
@@ -25,6 +25,6 @@ class SettingsViewModel {
                                                    notifications: notifications, gpsTracking: gpsTracking)
                 self?.dataManager.set(key: SettingKey.onBoardingData, value: newOnBoarding)
             })
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
     }
 }

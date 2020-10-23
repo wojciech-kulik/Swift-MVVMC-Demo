@@ -48,9 +48,9 @@ This project is POC for MVVM-C pattern where:
 - RxSwift may become hard in debugging once code complexity increases.
 
 ## Compilation
-Project uses [Carthage](https://github.com/Carthage/Carthage) for dependencies, so install it first and then run:
+Project uses [CocoaPods](https://cocoapods.org) for dependencies, so install it first and then run:
 
-    carthage update --platform iOS --no-use-binaries
+    pod install
 
 ## Application usage
 Sample login screen accepts any e-mail address and password `pass`.

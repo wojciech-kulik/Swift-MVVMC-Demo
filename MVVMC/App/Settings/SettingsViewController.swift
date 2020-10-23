@@ -13,30 +13,30 @@ class SettingsViewController: ViewControllerWithSideMenu, Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setUpBindings()
+        setUpBindings()
     }
     
     private func setUpBindings() {
-        guard let viewModel = self.viewModel else { return }
+        guard let viewModel = viewModel else { return }
         
-        self.title = viewModel.title
+        title = viewModel.title
         
         viewModel.notifications
-            .bind(to: self.sendNotificationsSwitch.rx.isOn)
-            .disposed(by: self.disposeBag)
+            .bind(to: sendNotificationsSwitch.rx.isOn)
+            .disposed(by: disposeBag)
         
         viewModel.gpsTracking
-            .bind(to: self.gpsTrackingSwitch.rx.isOn)
-            .disposed(by: self.disposeBag)
+            .bind(to: gpsTrackingSwitch.rx.isOn)
+            .disposed(by: disposeBag)
         
-        self.sendNotificationsSwitch.rx.isOn
+        sendNotificationsSwitch.rx.isOn
             .skip(1)
             .bind(to: viewModel.notifications)
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
-        self.gpsTrackingSwitch.rx.isOn
+        gpsTrackingSwitch.rx.isOn
             .skip(1)
             .bind(to: viewModel.gpsTracking)
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
     }
 }

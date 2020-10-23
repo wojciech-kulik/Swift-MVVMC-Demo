@@ -10,8 +10,8 @@ class SettingsCoordinator: BaseCoordinator {
     
     override func start() {
         let viewController = SettingsViewController.instantiate()
-        viewController.viewModel = self.settingsViewModel
+        viewController.viewModel = settingsViewModel
         
-        self.navigationController.viewControllers = [viewController]
+        navigationController.viewControllers = [viewController]
     }
 }

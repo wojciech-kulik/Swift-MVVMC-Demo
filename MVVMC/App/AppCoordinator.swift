@@ -3,13 +3,12 @@ import RxSwift
 import SideMenu
 
 class AppCoordinator: BaseCoordinator {
-
     private let disposeBag = DisposeBag()
     private let sessionService: SessionService
     private var window = UIWindow(frame: UIScreen.main.bounds)
     
-    private var drawerMenu: UISideMenuNavigationController? {
-        return SideMenuManager.default.menuLeftNavigationController
+    private var drawerMenu: SideMenuNavigationController? {
+        return SideMenuManager.default.leftMenuNavigationController
     }
     
     init(sessionService: SessionService) {
@@ -17,23 +16,23 @@ class AppCoordinator: BaseCoordinator {
     }
     
     override func start() {
-        self.window.makeKeyAndVisible()
+        window.makeKeyAndVisible()
         
-        self.sessionService.sessionState == nil
-            ? self.showSignIn()
-            : self.showDashboard()
+        sessionService.sessionState == nil
+            ? showSignIn()
+            : showDashboard()
         
-        self.subscribeToSessionChanges()
+        subscribeToSessionChanges()
     }
     
     private func subscribeToSessionChanges() {
-        self.sessionService.didSignIn
+        sessionService.didSignIn
             .subscribe(onNext: { [weak self] in self?.showDashboard() })
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
-        self.sessionService.didSignOut
+        sessionService.didSignOut
             .subscribe(onNext: { [weak self] in
-                guard let `self` = self else { return }
+                guard let self = self else { return }
                 
                 if self.drawerMenu?.isHidden ?? true {
                     self.showSignIn()
@@ -41,30 +40,30 @@ class AppCoordinator: BaseCoordinator {
                     self.drawerMenu?.dismiss(animated: true, completion: self.showSignIn)
                 }
             })
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
     }
     
     private func showSignIn() {
-        self.removeChildCoordinators()
+        removeChildCoordinators()
         
         let coordinator = AppDelegate.container.resolve(SignInCoordinator.self)!
-        self.start(coordinator: coordinator)
+        start(coordinator: coordinator)
         
         ViewControllerUtils.setRootViewController(
-            window: self.window,
+            window: window,
             viewController: coordinator.navigationController,
             withAnimation: true)
     }
     
     private func showDashboard() {
-        self.removeChildCoordinators()
+        removeChildCoordinators()
         
         let coordinator = AppDelegate.container.resolve(DrawerMenuCoordinator.self)!
         coordinator.navigationController = BaseNavigationController()
-        self.start(coordinator: coordinator)
+        start(coordinator: coordinator)
         
         ViewControllerUtils.setRootViewController(
-            window: self.window,
+            window: window,
             viewController: coordinator.navigationController,
             withAnimation: true)
     }

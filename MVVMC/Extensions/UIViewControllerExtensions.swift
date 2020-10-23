@@ -3,7 +3,7 @@ import UIKit
 
 extension UIViewController {
     func configureDismissKeyboard() {
-        self.view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:))))
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:))))
     }
     
     @objc private func handleTap(sender: UITapGestureRecognizer? = nil) {

@@ -33,13 +33,13 @@ class FancyButton: UIButton {
     
     override open var isEnabled: Bool {
         didSet {
-            self.alpha = self.isEnabled ? 1.0 : 0.4
+            alpha = isEnabled ? 1.0 : 0.4
         }
     }
     
     override open var isHighlighted: Bool {
         didSet {
-            self.setBackgroundColor()
+            setBackgroundColor()
         }
     }
     
@@ -61,29 +61,29 @@ class FancyButton: UIButton {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.setUpView()
+        setUpView()
     }
     
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
-        self.setUpView()
+        setUpView()
     }
     
     private func setUpView() {
-        self.cornerRadius = 10
-        self.borderWidth = 1
-        self.borderColor = self.tintColor
+        cornerRadius = 10
+        borderWidth = 1
+        borderColor = tintColor
         
-        self.setTitleColor(UIColor.white, for: .highlighted)
-        self.alpha = self.isEnabled ? 1.0 : 0.3
-        self.setBackgroundColor()
+        setTitleColor(UIColor.white, for: .highlighted)
+        alpha = isEnabled ? 1.0 : 0.3
+        setBackgroundColor()
         
-        self.layoutIfNeeded()
+        layoutIfNeeded()
     }
     
     private func setBackgroundColor() {
-        self.backgroundColor = self.isHighlighted
-            ? self.highlightedColor
+        backgroundColor = isHighlighted
+            ? highlightedColor
             : UIColor.clear
     }
 }

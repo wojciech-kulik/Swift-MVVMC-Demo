@@ -8,9 +8,9 @@ class LocalizedLabel: UILabel {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        if self.localizationKey == nil {
-            assertionFailure("Translation key not set for \(self.text ?? "")")
+        if localizationKey == nil {
+            assertionFailure("Translation key not set for \(text ?? "")")
         }
-        self.text = self.upperText ? self.localizationKey?.localizedUpper : self.localizationKey?.localized
+        text = upperText ? localizationKey?.localizedUpper : localizationKey?.localized
     }
 }

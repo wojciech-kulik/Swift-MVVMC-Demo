@@ -18,43 +18,43 @@ class SignInViewController: UIViewController, Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureDismissKeyboard()
-        self.setUpBindings()
+        configureDismissKeyboard()
+        setUpBindings()
     }
     
     private func setUpBindings() {
-        guard let viewModel = self.viewModel else { return }
+        guard let viewModel = viewModel else { return }
         
-        Observable.of(self.usernameTextField, self.passwordTextField)
+        Observable.of(usernameTextField, passwordTextField)
             .flatMap { $0.rx.controlEvent(.editingDidEndOnExit) }
             .withLatestFrom(viewModel.isSignInActive)
             .filter { $0 }
             .bind { [weak self] _ in self?.viewModel?.signIn() }
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
-        self.usernameTextField.rx.text.orEmpty
+        usernameTextField.rx.text.orEmpty
             .bind(to: viewModel.email)
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
-        self.passwordTextField.rx.text.orEmpty
+        passwordTextField.rx.text.orEmpty
             .bind(to: viewModel.password)
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
-        self.signInButton.rx.tap
+        signInButton.rx.tap
             .bind { [weak self] in self?.viewModel?.signIn() }
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
         viewModel.isSignInActive
-            .bind(to: self.signInButton.rx.isEnabled)
-            .disposed(by: self.disposeBag)
+            .bind(to: signInButton.rx.isEnabled)
+            .disposed(by: disposeBag)
         
         viewModel.isLoading
             .bind { [weak self] in
-                guard let `self` = self else { return }
+                guard let self = self else { return }
                 self.usernameTextField.isEnabled = !$0
                 self.passwordTextField.isEnabled = !$0
                 self.signInButton.isInProgress = $0
             }
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
     }
 }

@@ -7,7 +7,7 @@ class BackendRestClient {
     private lazy var sessionService: SessionService? = AppDelegate.container.resolve(SessionService.self)
     
     private var token: String? {
-        return self.sessionService?.sessionState?.token.getToken()
+        return sessionService?.sessionState?.token.getToken()
     }
     
     init(httpClient: HttpClient, alertDispatcher: AlertDispatcher) {
@@ -16,7 +16,6 @@ class BackendRestClient {
     }
     
     func request<T:Codable>(_ request: ApiRequest<T>) -> Single<T>{
-
         return Single.create { single in
             self.httpClient.set(headers: self.getHeaders())
             self.httpClient.request(
@@ -37,7 +36,7 @@ class BackendRestClient {
         guard response.success && response.statusCode == request.expectedCode else {
             Logger.error("Unsuccessful request", error: response.error)
             let error = ApiError.requestFailed(statusCode: response.statusCode, response: response.data)
-            self.dispatch(error: error)
+            dispatch(error: error)
             single(.error(error))
             return
         }
@@ -45,7 +44,7 @@ class BackendRestClient {
         guard let parsedResponse = response.data?.toObject(T.self) else {
             Logger.error("Could not parse response")
             let error = ApiError.requestFailed(statusCode: response.statusCode, response: response.data)
-            self.dispatch(error: error)
+            dispatch(error: error)
             single(.error(error))
             return
         }
@@ -55,15 +54,15 @@ class BackendRestClient {
     
     private func getHeaders() -> [String:String] {
         var headers = ["Content-Type": "application/json"]
-        if let tokenHeader = self.token {
+        if let tokenHeader = token {
             headers["Authorization"] = tokenHeader
         }
         return headers
     }
     
     private func dispatch(error: ApiError) {
-        let message = self.getMessage(error: error)
-        self.alertDispatcher.dispatch(error: message)
+        let message = getMessage(error: error)
+        alertDispatcher.dispatch(error: message)
     }
     
     private func getMessage(error: ApiError) -> AlertMessage {

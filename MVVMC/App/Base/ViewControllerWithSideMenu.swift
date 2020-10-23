@@ -8,38 +8,38 @@ class ViewControllerWithSideMenu: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.panGesture = SideMenuManager.default.addPanGestureToPresent(toView: self.navigationController!.navigationBar)
-        self.edgeGesture = SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: self.navigationController!.view, forMenu: .left)
+        panGesture = SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
+        edgeGesture = SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: navigationController!.view, forMenu: .left)
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "menu"), style: .plain, target: self, action: #selector(self.hamburgerMenuClicked))
-        self.navigationItem.leftBarButtonItem?.accessibilityIdentifier = "menuButton"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "menu"), style: .plain, target: self, action: #selector(hamburgerMenuClicked))
+        navigationItem.leftBarButtonItem?.accessibilityIdentifier = "menuButton"
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.enableSideMenu()
+        enableSideMenu()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-        self.disableSideMenu()
+        disableSideMenu()
     }
     
     func disableSideMenu() {
-        self.panGesture.isEnabled = false
-        self.edgeGesture.isEnabled = false
+        panGesture.isEnabled = false
+        edgeGesture.isEnabled = false
     }
     
     func enableSideMenu() {
-        self.panGesture.isEnabled = true
-        self.edgeGesture.isEnabled = true
+        panGesture.isEnabled = true
+        edgeGesture.isEnabled = true
     }
     
     func showSideMenu() {
-        self.present(SideMenuManager.default.leftMenuNavigationController!, animated: true, completion: nil)
+        present(SideMenuManager.default.leftMenuNavigationController!, animated: true, completion: nil)
     }
     
     @objc func hamburgerMenuClicked() {
-        self.showSideMenu()
+        showSideMenu()
     }
 }

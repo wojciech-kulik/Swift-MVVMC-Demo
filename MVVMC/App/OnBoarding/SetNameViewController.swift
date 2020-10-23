@@ -14,35 +14,35 @@ class SetNameViewController: UIViewController, Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.configureDismissKeyboard()
-        self.setUpBindings()
+        configureDismissKeyboard()
+        setUpBindings()
     }
     
     func setUpBindings() {
-        guard let viewModel = self.viewModel else { return }
+        guard let viewModel = viewModel else { return }
         
-        Observable.of(self.firstNameTextField, self.lastNameTextField)
+        Observable.of(firstNameTextField, lastNameTextField)
             .flatMap { $0.rx.controlEvent(.editingDidEndOnExit) }
             .withLatestFrom(viewModel.isNextActive)
             .filter { $0 }
             .map { _ in Void() }
             .bind(to: viewModel.didTapNext)
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
-        self.firstNameTextField.rx.text.orEmpty
+        firstNameTextField.rx.text.orEmpty
             .bind(to: viewModel.firstName)
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
-        self.lastNameTextField.rx.text.orEmpty
+        lastNameTextField.rx.text.orEmpty
             .bind(to: viewModel.lastName)
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
-        self.nextButton.rx.tap
+        nextButton.rx.tap
             .bind(to: viewModel.didTapNext)
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
         viewModel.isNextActive
-            .bind(to: self.nextButton.rx.isEnabled)
-            .disposed(by: self.disposeBag)
+            .bind(to: nextButton.rx.isEnabled)
+            .disposed(by: disposeBag)
     }
 }

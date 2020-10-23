@@ -12,9 +12,9 @@ class DashboardCoordinator: BaseCoordinator {
     
     override func start() {
         let viewController = DashboardViewController.instantiate()
-        viewController.viewModel = self.dashboardViewModel
+        viewController.viewModel = dashboardViewModel
         
-        self.navigationController.viewControllers = [viewController]
+        navigationController.viewControllers = [viewController]
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.showOnBoardingIfNeeded()
@@ -22,11 +22,11 @@ class DashboardCoordinator: BaseCoordinator {
     }
     
     func showOnBoardingIfNeeded() {
-        guard self.dataManager.get(key: SettingKey.onBoardingData, type: OnBoardingData.self) == nil else { return }
+        guard dataManager.get(key: SettingKey.onBoardingData, type: OnBoardingData.self) == nil else { return }
         
         let coordinator = AppDelegate.container.resolve(OnBoardingCoordinator.self)!
-        coordinator.navigationController = self.navigationController
+        coordinator.navigationController = navigationController
         
-        self.start(coordinator: coordinator)
+        start(coordinator: coordinator)
     }
 }

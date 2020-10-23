@@ -11,27 +11,27 @@ class SignInViewModel {
     
     init(sessionService: SessionService) {
         self.sessionService = sessionService
-        self.setUpBindings()
+        setUpBindings()
     }
     
     func signIn() {
-        self.isLoading.onNext(true)
+        isLoading.onNext(true)
         
         Observable
-            .combineLatest(self.email, self.password, self.isSignInActive)
+            .combineLatest(email, password, isSignInActive)
             .take(1)
             .filter { _, _, active in active }
             .map { username, password, _ in Credentials(username: username, password: password) }
             .flatMapLatest { [weak self] in self?.sessionService.signIn(credentials: $0) ?? Completable.empty() }
             .subscribe { [weak self] _ in self?.isLoading.onNext(false) }
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
     }
     
     private func setUpBindings() {
         Observable
-            .combineLatest(self.email, self.password)
+            .combineLatest(email, password)
             .map { $0.hasNonEmptyValue() && $1.hasNonEmptyValue() }
-            .bind(to: self.isSignInActive)
-            .disposed(by: self.disposeBag)
+            .bind(to: isSignInActive)
+            .disposed(by: disposeBag)
     }
 }

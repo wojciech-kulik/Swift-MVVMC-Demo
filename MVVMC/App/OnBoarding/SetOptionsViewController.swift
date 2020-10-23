@@ -14,22 +14,22 @@ class SetOptionsViewController: UIViewController, Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setUpBindings()
+        setUpBindings()
     }
     
     func setUpBindings() {
-        guard let viewModel = self.viewModel else { return }
+        guard let viewModel = viewModel else { return }
         
-        self.notificationsSwitch.rx.isOn
+        notificationsSwitch.rx.isOn
             .bind(to: viewModel.notifications)
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
-        self.gpsTrackingSwitch.rx.isOn
+        gpsTrackingSwitch.rx.isOn
             .bind(to: viewModel.gpsTracking)
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
-        self.finishButton.rx.tap
+        finishButton.rx.tap
             .bind(to: viewModel.didTapFinish)
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
     }
 }

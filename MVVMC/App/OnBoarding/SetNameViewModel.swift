@@ -10,14 +10,14 @@ class SetNameViewModel {
     let isNextActive = BehaviorSubject<Bool>(value: false)
     
     init() {
-        self.setUpBindings()
+        setUpBindings()
     }
     
     private func setUpBindings() {
         Observable
-            .combineLatest(self.firstName, self.lastName)
+            .combineLatest(firstName, lastName)
             .map { $0.hasNonEmptyValue() && $1.hasNonEmptyValue() }
-            .bind(to: self.isNextActive)
-            .disposed(by: self.disposeBag)
+            .bind(to: isNextActive)
+            .disposed(by: disposeBag)
     }
 }

@@ -21,19 +21,19 @@ class BaseCoordinator: Coordinator {
     }
     
     func start(coordinator: Coordinator) {
-        self.childCoordinators += [coordinator]
+        childCoordinators += [coordinator]
         coordinator.parentCoordinator = self
         coordinator.start()
     }
     
     func removeChildCoordinators() {
-        self.childCoordinators.forEach { $0.removeChildCoordinators() }
-        self.childCoordinators.removeAll()
+        childCoordinators.forEach { $0.removeChildCoordinators() }
+        childCoordinators.removeAll()
     }
     
     func didFinish(coordinator: Coordinator) {
-        if let index = self.childCoordinators.firstIndex(where: { $0 === coordinator }) {
-            self.childCoordinators.remove(at: index)
+        if let index = childCoordinators.firstIndex(where: { $0 === coordinator }) {
+            childCoordinators.remove(at: index)
         }
     }
 }

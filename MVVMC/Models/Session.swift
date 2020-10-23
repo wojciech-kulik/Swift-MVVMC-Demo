@@ -6,6 +6,6 @@ struct Session: Codable, Equatable {
     private(set) var profile: MeResponse
     
     mutating func updateDetails(_ data: MeResponse) {
-        self.profile = data
+        profile = data
     }
 }

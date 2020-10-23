@@ -8,9 +8,9 @@ class BaseNavigationController: UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationBar.isTranslucent = false
-        self.navigationBar.tintColor = .white
-        self.navigationBar.barTintColor = Constants.mainColor
-        self.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        navigationBar.isTranslucent = false
+        navigationBar.tintColor = .white
+        navigationBar.barTintColor = Constants.mainColor
+        navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
     }
 }

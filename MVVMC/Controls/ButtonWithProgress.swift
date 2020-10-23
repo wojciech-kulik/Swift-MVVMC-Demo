@@ -7,49 +7,49 @@ import UIKit
     
     var isInProgress: Bool = false {
         didSet {
-            self.setInProgress()
+            setInProgress()
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.setUpView()
+        setUpView()
     }
     
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
-        self.setUpView()
+        setUpView()
     }
     
     private func setInProgress() {
 
-        if self.isInProgress {
-            self.inProgressView.translatesAutoresizingMaskIntoConstraints = false
-            self.addSubview(self.inProgressView)
-            self.inProgressView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
-            self.inProgressView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
-            self.inProgressView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-            self.inProgressView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        if isInProgress {
+            inProgressView.translatesAutoresizingMaskIntoConstraints = false
+            addSubview(inProgressView)
+            inProgressView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+            inProgressView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+            inProgressView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+            inProgressView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
             
-            self.indicatorView.startAnimating()
+            indicatorView.startAnimating()
             return
         }
         
-        self.indicatorView.stopAnimating()
-        self.inProgressView.removeFromSuperview()
+        indicatorView.stopAnimating()
+        inProgressView.removeFromSuperview()
     }
     
     private func setUpView() {
-        self.inProgressView.clipsToBounds = true
-        self.inProgressView.layer.cornerRadius = 5
-        self.inProgressView.backgroundColor = .white
+        inProgressView.clipsToBounds = true
+        inProgressView.layer.cornerRadius = 5
+        inProgressView.backgroundColor = .white
         
-        self.indicatorView.translatesAutoresizingMaskIntoConstraints = false
-        self.inProgressView.addSubview(self.indicatorView)
-        self.indicatorView.centerXAnchor.constraint(equalTo: self.inProgressView.centerXAnchor).isActive = true
-        self.indicatorView.centerYAnchor.constraint(equalTo: self.inProgressView.centerYAnchor).isActive = true
-        self.indicatorView.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        self.indicatorView.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        self.indicatorView.contentScaleFactor = 1.5
+        indicatorView.translatesAutoresizingMaskIntoConstraints = false
+        inProgressView.addSubview(indicatorView)
+        indicatorView.centerXAnchor.constraint(equalTo: inProgressView.centerXAnchor).isActive = true
+        indicatorView.centerYAnchor.constraint(equalTo: inProgressView.centerYAnchor).isActive = true
+        indicatorView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        indicatorView.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        indicatorView.contentScaleFactor = 1.5
     }
 }

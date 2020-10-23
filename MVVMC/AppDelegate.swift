@@ -15,10 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Container.loggingFunction = nil
         AppDelegate.container.registerDependencies()
         
-        self.setUpSideMenu()
+        setUpSideMenu()
         
-        self.appCoordinator = AppDelegate.container.resolve(AppCoordinator.self)!
-        self.appCoordinator.start()
+        appCoordinator = AppDelegate.container.resolve(AppCoordinator.self)!
+        appCoordinator.start()
 
         return true
     }

@@ -16,22 +16,22 @@ class DrawerMenuViewController: UIViewController, Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.tableFooterView = UIView()
-        self.setUpBindings()
+        tableView.tableFooterView = UIView()
+        setUpBindings()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.nameLabel.text = viewModel?.fullName
-        self.emailLabel.text = viewModel?.emailAddress
+        nameLabel.text = viewModel?.fullName
+        emailLabel.text = viewModel?.emailAddress
     }
     
     private func setUpBindings() {
-        guard let viewModel = self.viewModel, self.tableView != nil else { return }
+        guard let viewModel = viewModel, tableView != nil else { return }
         
-        self.selectedRow = 0
+        selectedRow = 0
         
         viewModel.menuItems
-            .bind(to: self.tableView.rx.items(cellIdentifier: "defaultCell")) { [weak self] row, model, cell in
+            .bind(to: tableView.rx.items(cellIdentifier: "defaultCell")) { [weak self] row, model, cell in
                 cell.selectionStyle = .none
                 cell.textLabel?.text = model.localizedUpper
                 cell.textLabel?.textColor = self?.selectedRow == row ? .white : .darkGray
@@ -39,11 +39,11 @@ class DrawerMenuViewController: UIViewController, Storyboarded {
                     ? Constants.mainColor
                     : UIColor.clear
             }
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
-        self.tableView.rx.itemSelected
+        tableView.rx.itemSelected
             .subscribe(onNext: { [weak self] indexPath in
-                guard let `self` = self else { return }
+                guard let self = self else { return }
                 self.selectedRow = indexPath.row
                 self.tableView.reloadData()
                 
@@ -54,8 +54,8 @@ class DrawerMenuViewController: UIViewController, Storyboarded {
                     }
                 }
             })
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
 }

@@ -8,16 +8,16 @@ class LocalizedButton: FancyButton {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        if self.localizationKey == nil {
-            assertionFailure("Translation key not set for \(self.title(for: .normal) ?? "")")
+        if localizationKey == nil {
+            assertionFailure("Translation key not set for \(title(for: .normal) ?? "")")
         }
-        self.setTitle(self.upperText ? self.localizationKey?.localizedUpper : self.localizationKey?.localized)
+        setTitle(upperText ? localizationKey?.localizedUpper : localizationKey?.localized)
     }
     
     private func setTitle(_ title: String?) {
         UIView.performWithoutAnimation {
-            self.setTitle(title, for: .normal)
-            self.layoutIfNeeded()
+            setTitle(title, for: .normal)
+            layoutIfNeeded()
         }
     }
 }

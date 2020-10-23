@@ -18,38 +18,38 @@ class OnBoardingCoordinator: BaseCoordinator {
     }
     
     override func start() {
-        self.setUpBindings()
+        setUpBindings()
         
         let viewController = SetNameViewController.instantiate()
-        viewController.viewModel = self.setNameViewModel
+        viewController.viewModel = setNameViewModel
         
-        self.onBoardingViewController = BaseNavigationController(rootViewController: viewController)
-        self.onBoardingViewController.navigationBar.isHidden = true
-        self.onBoardingViewController.modalPresentationStyle = .fullScreen
-        self.navigationController.presentOnTop(self.onBoardingViewController, animated: true)
+        onBoardingViewController = BaseNavigationController(rootViewController: viewController)
+        onBoardingViewController.navigationBar.isHidden = true
+        onBoardingViewController.modalPresentationStyle = .fullScreen
+        navigationController.presentOnTop(onBoardingViewController, animated: true)
     }
     
     private func didSetName() {
         let viewController = SetOptionsViewController.instantiate()
-        viewController.viewModel = self.setOptionsViewModel
+        viewController.viewModel = setOptionsViewModel
 
-        self.onBoardingViewController.pushViewController(viewController, animated: true)
+        onBoardingViewController.pushViewController(viewController, animated: true)
     }
     
     private func didFinishOnBoarding(with data: OnBoardingData) {
-        self.dataManager.set(key: SettingKey.onBoardingData, value: data)
-        self.onBoardingViewController.dismiss(animated: true, completion: nil)
-        self.parentCoordinator?.didFinish(coordinator: self)
+        dataManager.set(key: SettingKey.onBoardingData, value: data)
+        onBoardingViewController.dismiss(animated: true, completion: nil)
+        parentCoordinator?.didFinish(coordinator: self)
     }
     
     private func setUpBindings() {
-        self.setNameViewModel.didTapNext
+        setNameViewModel.didTapNext
             .subscribe(onNext: { [weak self] in self?.didSetName() })
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
-        self.setOptionsViewModel.didTapFinish
+        setOptionsViewModel.didTapFinish
             .flatMapLatest { [weak self] () -> Observable<OnBoardingData> in
-                guard let `self` = self else { return Observable.empty() }
+                guard let self = self else { return Observable.empty() }
                 return Observable.combineLatest(
                     self.setNameViewModel.firstName,
                     self.setNameViewModel.lastName,
@@ -59,6 +59,6 @@ class OnBoardingCoordinator: BaseCoordinator {
                     .map { OnBoardingData(firstName: $0.0, lastName: $0.1, notifications: $0.2, gpsTracking: $0.3) }
             }
             .subscribe(onNext: { [weak self] data in self?.didFinishOnBoarding(with: data) })
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
     }
 }

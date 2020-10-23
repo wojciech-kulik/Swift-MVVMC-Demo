@@ -8,11 +8,11 @@ class LocalizedTextField: UITextField {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        if (self.placeholder?.hasNonEmptyValue() ?? false) && self.placeholderLocalizationKey == nil {
-            assertionFailure("Translation key not set for \(self.text ?? "")")
+        if (placeholder?.hasNonEmptyValue() ?? false) && placeholderLocalizationKey == nil {
+            assertionFailure("Translation key not set for \(text ?? "")")
         }
-        self.placeholder = self.upperText
-            ? self.placeholderLocalizationKey?.localizedUpper ?? self.placeholder
-            : self.placeholderLocalizationKey?.localized ?? self.placeholder
+        placeholder = upperText
+            ? placeholderLocalizationKey?.localizedUpper ?? placeholder
+            : placeholderLocalizationKey?.localized ?? placeholder
     }
 }

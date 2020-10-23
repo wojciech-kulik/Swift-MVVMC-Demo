@@ -13,24 +13,24 @@ class DashboardViewController: ViewControllerWithSideMenu, Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setUpView()
+        setUpView()
     }
     
     private func setUpView() {
-        guard let viewModel = self.viewModel else { return }
+        guard let viewModel = viewModel else { return }
         
-        self.title = viewModel.title
-        self.tableView.tableFooterView = UIView()
+        title = viewModel.title
+        tableView.tableFooterView = UIView()
         
         viewModel.isLoading
-            .bind(to: self.activityIndicator.rx.isAnimating)
-            .disposed(by: self.disposeBag)
+            .bind(to: activityIndicator.rx.isAnimating)
+            .disposed(by: disposeBag)
         
         viewModel.tasks
-            .bind(to: self.tableView.rx.items(cellIdentifier: "defaultCell")) { row, model, cell in
+            .bind(to: tableView.rx.items(cellIdentifier: "defaultCell")) { row, model, cell in
                 cell.textLabel?.text = model
                 cell.selectionStyle = .none
             }
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
     }
 }

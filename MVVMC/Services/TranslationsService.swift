@@ -11,18 +11,18 @@ class TranslationsService {
     init(dataManager: DataManager, restClient: BackendRestClient) {
         self.dataManager = dataManager
         self.restClient = restClient
-        self.loadTranslations()
+        loadTranslations()
     }
     
     func loadTranslations() {
-        self.translations = self.dataManager.get(key: SettingKey.translations, type: Languages.self) ?? self.loadDefaultTranslations()
-        self.currentLocale = self.getLocale()
-        Logger.info("Current locale: \(self.currentLocale.identifier)")
-        Logger.info("Loaded languages: \(self.translations?.count ?? 0)")
+        translations = dataManager.get(key: SettingKey.translations, type: Languages.self) ?? loadDefaultTranslations()
+        currentLocale = getLocale()
+        Logger.info("Current locale: \(currentLocale.identifier)")
+        Logger.info("Loaded languages: \(translations?.count ?? 0)")
     }
     
     func fetchTranslations() -> Completable {
-        let request = self.restClient.request(GeneralEndpoints.FetchTranslations())
+        let request = restClient.request(GeneralEndpoints.FetchTranslations())
         
         return request
             .do(onSuccess: { [weak self] response in
@@ -33,14 +33,14 @@ class TranslationsService {
     }
     
     func getCurrentTranslations() -> [String:String]? {
-        let localeId = self.currentLocale.identifier.replacingOccurrences(of: "_", with: "-")
+        let localeId = currentLocale.identifier.replacingOccurrences(of: "_", with: "-")
         let translations = self.translations?[localeId]
         return translations
     }
     
     private func getLocale() -> Locale {
         if let preferred = Locale.preferredLanguages
-            .first(where: { self.translations?[$0.replacingOccurrences(of: "_", with: "-")] != nil }) {
+            .first(where: { translations?[$0.replacingOccurrences(of: "_", with: "-")] != nil }) {
             
             return Locale(identifier: preferred)
         }

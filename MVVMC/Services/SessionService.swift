@@ -23,10 +23,10 @@ class SessionService {
     private(set) var sessionState: Session?
     
     var didSignOut: Observable<Void> {
-        return self.signOutSubject.asObservable()
+        return signOutSubject.asObservable()
     }
     var didSignIn: Observable<Void> {
-        return self.signInSubject.asObservable()
+        return signInSubject.asObservable()
     }
     
     // MARK: - Public Methods
@@ -36,14 +36,14 @@ class SessionService {
         self.restClient = restClient
         self.translationsService = translationsService
         
-        self.loadSession()
+        loadSession()
     }
     
     func signIn(credentials: Credentials) -> Completable {
-        let signIn = self.restClient.request(SessionEndpoints.SignIn(credentials: credentials))
-        let fetchMe = self.restClient.request(SessionEndpoints.FetchMe())
+        let signIn = restClient.request(SessionEndpoints.SignIn(credentials: credentials))
+        let fetchMe = restClient.request(SessionEndpoints.FetchMe())
         
-        return self.translationsService.fetchTranslations()
+        return translationsService.fetchTranslations()
             .andThen(signIn)
             .do(onSuccess: { [weak self] in try self?.setToken(response: $0) })
             .flatMap { _ in fetchMe }
@@ -52,7 +52,7 @@ class SessionService {
     }
     
     func signOut() -> Completable {
-        let signOut = self.restClient.request(SessionEndpoints.SignOut())
+        let signOut = restClient.request(SessionEndpoints.SignOut())
         
         return signOut
             .do(onSuccess: { [weak self] _ in self?.removeSession() })
@@ -60,7 +60,7 @@ class SessionService {
     }
     
     func refreshProfile() -> Single<MeResponse> {
-        let fetchMe = self.restClient.request(SessionEndpoints.FetchMe())
+        let fetchMe = restClient.request(SessionEndpoints.FetchMe())
         
         return fetchMe
             .do(onSuccess: { [weak self] in self?.updateProfile(data: $0) })
@@ -73,36 +73,36 @@ class SessionService {
             throw SessionError.invalidToken
         }
         
-        self.token = Token(token: accessToken, tokenType: tokenType)
+        token = Token(token: accessToken, tokenType: tokenType)
     }
     
     private func setSession(credentials: Credentials, response: MeResponse) throws {
-        guard let token = self.token else {
+        guard let token = token else {
             throw SessionError.invalidToken
         }
         
-        self.sessionState = Session(
+        sessionState = Session(
             token: token,
             email: credentials.username.lowercased(),
             profile: response)
-        self.dataManager.set(key: SettingKey.session, value: self.sessionState)
+        dataManager.set(key: SettingKey.session, value: sessionState)
         
-        self.signInSubject.onNext(Void())
+        signInSubject.onNext(Void())
     }
     
     private func loadSession() {
-        self.sessionState = self.dataManager.get(key: SettingKey.session, type: Session.self)
+        sessionState = dataManager.get(key: SettingKey.session, type: Session.self)
     }
     
     private func removeSession() {
-        self.dataManager.clear()
-        self.token = nil
-        self.sessionState = nil
-        self.signOutSubject.onNext(Void())
+        dataManager.clear()
+        token = nil
+        sessionState = nil
+        signOutSubject.onNext(Void())
     }
     
     private func updateProfile(data: MeResponse) {
-        self.sessionState?.updateDetails(data)
-        self.dataManager.set(key: SettingKey.session, value: self.sessionState)
+        sessionState?.updateDetails(data)
+        dataManager.set(key: SettingKey.session, value: sessionState)
     }
 }

@@ -12,7 +12,7 @@ class SignInCoordinator: BaseCoordinator {
         let viewController = SignInViewController.instantiate()
         viewController.viewModel = viewModel
         
-        self.navigationController.isNavigationBarHidden = true
-        self.navigationController.viewControllers = [viewController]
+        navigationController.isNavigationBarHidden = true
+        navigationController.viewControllers = [viewController]
     }
 }

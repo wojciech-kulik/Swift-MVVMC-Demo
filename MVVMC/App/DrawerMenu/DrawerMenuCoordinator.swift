@@ -14,14 +14,14 @@ class DrawerMenuCoordinator: BaseCoordinator {
     }
     
     override func start() {
-        self.drawerMenuViewModel.didSelectScreen
+        drawerMenuViewModel.didSelectScreen
             .distinctUntilChanged()
             .subscribe(onNext: { [weak self] screen in self?.selectScreen(screen) })
-            .disposed(by: self.disposeBag)
+            .disposed(by: disposeBag)
         
         let drawerMenu = SideMenuManager.default.leftMenuNavigationController
         let menuViewController = drawerMenu?.topViewController as? DrawerMenuViewController
-        menuViewController?.viewModel = self.drawerMenuViewModel
+        menuViewController?.viewModel = drawerMenuViewModel
     }
     
     func selectScreen(_ screen: DrawerMenuScreen) {
@@ -29,21 +29,21 @@ class DrawerMenuCoordinator: BaseCoordinator {
         
         switch screen {
         case .dashboard:
-            self.removeChildCoordinators()
+            removeChildCoordinators()
             let coordinator = AppDelegate.container.resolve(DashboardCoordinator.self)!
-            coordinator.navigationController = self.navigationController
-            self.start(coordinator: coordinator)
+            coordinator.navigationController = navigationController
+            start(coordinator: coordinator)
             
         case .settings:
-            self.removeChildCoordinators()
+            removeChildCoordinators()
             let coordinator = AppDelegate.container.resolve(SettingsCoordinator.self)!
-            coordinator.navigationController = self.navigationController
-            self.start(coordinator: coordinator)
+            coordinator.navigationController = navigationController
+            start(coordinator: coordinator)
             
         case .signOut:
-            self.sessionService.signOut()
+            sessionService.signOut()
                 .subscribe()
-                .disposed(by: self.disposeBag)
+                .disposed(by: disposeBag)
         }
     }
 }
